@@ -1,0 +1,55 @@
+.Container {
+    width: 80%;
+    margin: auto;
+
+}
+
+.profileContainer {
+    height: auto;
+    min-height: 400px;
+    background-color: aqua;
+}
+.profiles {
+    display: flex;
+}
+
+.profiles button {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.profiles ul {
+    width: auto;
+    margin: 10px;
+    list-style-type: none;
+    text-align: center;
+}
+
+.profiles li{
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    background-color: blue;
+}
+
+
+
+
+
+.logoutContainer {
+    height: 100px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.logoutContainer button {
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #f3b835;
+    font-size: 1rem;
+    color: white;
+}

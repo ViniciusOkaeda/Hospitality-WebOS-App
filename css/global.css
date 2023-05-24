@@ -1,0 +1,64 @@
+body {
+	width: 1920px;
+	height: 1080px;
+    overflow: auto;
+    background-color: rgba(29, 32, 33, 1);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 4rem;
+    text-shadow: 2px 2px rgba(94, 94, 94, 0.3);
+}
+
+h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    text-shadow: 2px 2px rgba(94, 94, 94, 0.3);
+
+
+}
+
+h3 {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+
+}
+
+h4 {
+    color: rgb(210, 210, 210);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+h6 {
+    color: rgb(204, 204, 204);
+    font-size: 1.2rem;
+    font-weight: 400;
+
+}
+
+button {
+    border: none;
+    font-size: 20px;
+    height: 65px;
+	background-color: #f3b835;
+	border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+
+}
+
+.selected:focus-within {
+    border: 5px solid rgb(255, 255, 255);
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition-timing-function: ease-in;
+  }
+
