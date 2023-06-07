@@ -1,9 +1,12 @@
+
 function getHomepageV2()
 {
+
+    //console.log("o navigation", navigationOptionsMenu)
     const auth = localStorage.getItem("authorization");
     const profile = localStorage.getItem("profileid");
     const language = 'pt';
-    const devicesType = 'webos';
+    const devicesType = 'web player';
 
 
 
@@ -26,35 +29,7 @@ function getHomepageV2()
             //fim do bloco do banner
 
 
-
-
-
-           document.getElementById('slideshow').innerHTML =
-           `
-           ${category.map((e, idx) => {
-
-            return(`
-                <div class="mySlides fade" >
-                    <div 
-                    style=" background-image: 
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(29, 32, 33, 1) 85%), 
-                    url(${e.image_widescreen}) ">
-                    
-
-                    </div>
-
-                    <span class="dot"></span> 
-                </div>`
-            );
-           })}
-           `
-
-
             //document.getElementById('myHomepageP').innerHTML = titleSelected.title;
-            
-            console.log("o array", titleSelected)
-            console.log("o array", titleSelected.title)
-
         }
     }).catch(function (response) {
         console.log("o response de erro", response)
@@ -274,35 +249,61 @@ function showBannerInitial(response) {
 
 function showCategoriesCards(response) {
 
-
     document.getElementById('contentCategories').innerHTML =
     `
     ${response.filter(e => e.type == 'category selection').map((e, idx) => {
         //console.log("o e", e)
         return(`
             <div class="containerCategories">
-                <div class="contentCategories">
+                <div class="contentCategories selected">
             
                     <div class="cardTitle">
-                        <h2>${e.title}</h2>
+                        <h2  class="">${e.title}</h2>
                     </div>
 
-                        <div class="cardFlex">
+                        <div class="cardFlex ">
                         ${e.data.map(e => {
-
                             return(`
-                            <div class="cardContainer">
-                                <div class="cardButton">
-                                    <button style="
-                                        background-image: url(${e.image}); 
-                                        background-size: cover; 
-                                        background-repeat: no-repeat;
-                                        background-position: top center;
+                            <div id="cardSelectedPick">
+                                <div class="cardContainer">
+                                    <div class="cardButton">
+                                        <button
+                                            onfocus="getInfoCardSelected()"
+                                            onclick="storageContent(${e.channels_id ? e.channels_id : e.id})"
+                                            class="selectedCategoryCard"
+                                            style="
+                                                background-image: url(${e.image}); 
+                                                background-size: cover; 
+                                                background-repeat: no-repeat;
+                                                background-position: top center;
+                                                object-fit: cover
                                         "></button>
+                                    </div>
+                                    <div class="cardInfo ">
+                                    <h3>${e.title}</h3>
+                                    </div>
+                                    <div class="cardDetails unlock">
+                                        <div class="cardDetailsTimeAndChannel">
+                                            <div class="cardTime">
+                                                <h4>${e.start}</h4>
+                                            </div>
+                                            <div class="cardChannel">
+                                            ${e.channels_logo ? `<image src="${e.channels_logo}"></image>` : ""}
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                        <div class="cardDetailsRating"></div>
+
+                                        <div class="cardDetailsDescriptions">
+                                            <h4>${e.description}</h4>
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div class="cardInfo">
-                                <h3>${e.title}</h3>
-                                </div>
+
+
+                                
                             </div>
                             
                             `)
@@ -318,27 +319,11 @@ function showCategoriesCards(response) {
     })}
 
     `
+
 }
 
-
-let slideIndex = 0;
-
-showSlides();
-
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 4000); // Change image every 2 seconds
+function storageContent(content) {
+    localStorage.setItem("contentId", content)
+    console.log("o content", content)
 }
 

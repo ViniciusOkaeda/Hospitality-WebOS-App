@@ -1,11 +1,11 @@
-function navigationOptionsMenu() {
+ function navigationOptionsMenu() {
 
 
 
     document.getElementById('navigationOptions').innerHTML = 
     `
-    <div class="navigationContainer">
-        <div class="navigationContent1">
+    <div class="navigationContainer ">
+        <div class="navigationContent1 selectedMenu">
             <div class="navigationProfile">
 
                 <div class="navigationProfileImage"
@@ -27,15 +27,19 @@ function navigationOptionsMenu() {
                 </div>
             </div>
 
-            <button class="navigationButton">
-                <div class="navigationButtonIcon">
-                    <image src="../../images/magnifier.png"></image>
-                </div>
-                <div class="navigationButtonText">
-                    <h3>Pesquisar</h3>
-                </div>
-            </button>
-            <button class="navigationButton">
+            <a href="../channels/channels.html">
+                <button class="navigationButton selectedMenuItem">
+                    <div class="navigationButtonIcon">
+                        <image src="../../images/magnifier.png"></image>
+                    </div>
+                    <div class="navigationButtonText">
+                        <h3>Pesquisar</h3>
+                    </div>
+                </button>
+            </a>
+
+            <a href="../catalog/catalog.html">
+            <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/home.png"></image>
                 </div>
@@ -43,7 +47,10 @@ function navigationOptionsMenu() {
                     <h3>Home</h3>
                 </div>
             </button>
-            <button class="navigationButton">
+            </a>
+
+            <a href="../player/player.html">
+            <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/watching-tv.png"></image>
                 </div>
@@ -51,7 +58,10 @@ function navigationOptionsMenu() {
                     <h3>TV</h3>
                 </div>
             </button>
-            <button class="navigationButton">
+            </a>
+
+            <a href="../channels/channels.html">
+            <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/bullet-list.png"></image>
                 </div>
@@ -60,7 +70,10 @@ function navigationOptionsMenu() {
 
                 </div>
             </button>
-            <button class="navigationButton">
+            </a>
+
+            <a href="../channels/channels.html">
+            <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/watch-movie.png"></image>
                 </div>
@@ -68,7 +81,10 @@ function navigationOptionsMenu() {
                 <h3>Filmes e Séries</h3>
                 </div>
             </button>
-            <button class="navigationButton">
+            </a>
+
+            <a href="../channels/channels.html">
+            <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/fm.png"></image>
                 </div>
@@ -76,7 +92,10 @@ function navigationOptionsMenu() {
                 <h3>Radios</h3>
                 </div>
             </button>
-            <button class="navigationButton">
+            </a>
+
+            <a href="../channels/channels.html">
+            <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/settings.png"></image>
                 </div>
@@ -84,6 +103,7 @@ function navigationOptionsMenu() {
                 <h3>Configurações</h3>
                 </div>
             </button>
+            </a>
 
         </div>
         <div class="navigationContent2"></div>

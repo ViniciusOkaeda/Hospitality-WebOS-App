@@ -8,34 +8,21 @@
     display: flex;
 }
 
+.selectedMenu {
+    background-color: rgba(35, 35, 35, 0.9);
+    opacity: 0.6;
+}
+
 .navigationContent1 {
     width: auto;
     min-width: 160px;
-    background-color: rgba(35, 35, 35, 0.9);
-    opacity: 0.6;
     box-shadow: 10px 0 50px -2px #1d1d1d;
     padding: 0px 10px 0px 10px;
     display: flex;
     flex-direction: column;
 }
 
-.navigationContainer:focus-within{
 
-    .navigationContent1 {
-        background-color: rgba(35, 35, 35, 0.98);
-        opacity: 1;
-        transition-timing-function: ease-in;
-
-    }
-    .navigationButtonText{
-        display: block;
-    }
-    .navigationProfileText{
-        display: flex;
-        flex-direction: column;
-    }
-
-  }
 
 .navigationProfile {
     width: 80%;
@@ -93,13 +80,8 @@ margin: 0
     margin: 15px auto;
 }
 
-.navigationButton:focus-within{
-    border: 5px solid rgb(255, 255, 255);
-	box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
-    transition-timing-function: ease-in;
 
 
-}
 
 .navigationButtonIcon {
     width: 50%;
@@ -126,5 +108,35 @@ margin: 0
     margin-left: 20px;
     padding-top: 15px;
     margin-top: 0px;
+}
+
+
+.selectedMenu:focus-within{
+    background-color: rgba(35, 35, 35, 0.98);
+    opacity: 1;
+
+    .navigationContent1 {
+        transition-timing-function: ease-in;
+
+    }
+    .navigationButtonText{
+        display: block;
+    }
+    .navigationProfileText{
+        display: flex;
+        flex-direction: column;
+    }
+
+  }
+
+
+
+.selectedMenuItem:focus-within{
+
+    .navigationButton {
+        border: 5px solid rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
+        transition-timing-function: ease-in;
+    }
 }
 
