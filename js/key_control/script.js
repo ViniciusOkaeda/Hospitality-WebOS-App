@@ -54,6 +54,13 @@ document.addEventListener('keydown', onKeyDown, function(e) {
     //oneMore++;
     //console.log("contagem", oneMore)
 });
+if(window.location.pathname == "/pages/catalog/catalog.html"){
+    console.log("é o catalogo")
+}
+if(window.location.pathname == "/"){
+    console.log("é o inicio")
+}
+console.log("o window", window.location);
 
 function onKeyDown(event) {
     menu = document.querySelectorAll('.selectedMenu')
@@ -63,131 +70,309 @@ function onKeyDown(event) {
 
     campoCategory = document.querySelectorAll('.selectedCategoryCard')
     
-    
     switch (event.keyCode) {
         
         case KEYCODE.DOWN:
-        console.log("keycode down");
-        moveDownHome();
+            switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
+                    console.log("keycode down");
+                    moveDownHome();
+                    //console.log("o indice é", indice)
+                    //aqui começa para acessar o menu lateral esquerdo
+                    firstDownKey = true
+                    if(firstDownKey == true) {
+                        unlockLeftMenu = true;
+                    }
+            
+                    if(toAcessMenu == 0 && unlockLeftMenu == true) {
+                        if(oneMoreMenu < campoMenu.length -1) {
+                            auxDontCount = false;
+                            oneMoreMenu+=1;
+                            console.log("o que tem no campo menu", campoMenu);
+                            console.log("o onemore no down", oneMoreMenu);
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
+                                console.log("o indicemenu", indiceMenu)
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+                case "/pages/catalog/catalog.html": 
+                    console.log("keycode down");
+                    moveDownHome();
+                    //console.log("o indice é", indice)
+                    //aqui começa para acessar o menu lateral esquerdo
+                    firstDownKey = true
+                    if(firstDownKey == true) {
+                        unlockLeftMenu = true;
+                    }
+            
+                    if(toAcessMenu == 0 && unlockLeftMenu == true) {
+                        if(oneMoreMenu < campoMenu.length -1) {
+                            auxDontCount = false;
+                            oneMoreMenu+=1;
+                            console.log("o que tem no campo menu", campoMenu);
+                            console.log("o onemore no down", oneMoreMenu);
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
+                                console.log("o indicemenu", indiceMenu)
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/index.html":
+                    moveDownLogin();
 
+                    break;
 
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/info-selected-content/selectedcontent.html":
+                    moveDownSelectedContent();
 
+                    break;
 
-        //console.log("o indice é", indice)
-        //aqui começa para acessar o menu lateral esquerdo
-        firstDownKey = true
-        if(firstDownKey == true) {
-            unlockLeftMenu = true;
-        }
+                case "/pages/info-selected-content/selectedcontent.html":
+                    moveDownSelectedContent();
 
-        if(toAcessMenu == 0 && unlockLeftMenu == true) {
-            if(oneMoreMenu < campoMenu.length -1) {
-                auxDontCount = false;
-                oneMoreMenu+=1;
-                console.log("o que tem no campo menu", campoMenu);
-                console.log("o onemore no down", oneMoreMenu);
-                indiceMenu = campoMenu[oneMoreMenu];
-                if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
-                    console.log("o indicemenu", indiceMenu)
-                    indiceMenu.focus();
-                }
+                    break;
             }
-        }
+
         event.preventDefault();
         break;
         case KEYCODE.UP:
+            switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
+                    moveUpHome();
+                    //parte para acessar e navegar o menu lateral esquerdo
+                    if(toAcessMenu == 0) {
+                        if(oneMoreMenu > 0) {
+                            oneMoreMenu-=1;
+                            console.log("o oneMoreMenu no UP", oneMoreMenu)
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            console.log("o que tem no indiceMenu do UP", indiceMenu)
+                            if(indiceMenu != null || indiceMenu != undefined) {
+                                anterior = campo[+1];
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+                case "/pages/catalog/catalog.html": 
+                    moveUpHome();
+                    //parte para acessar e navegar o menu lateral esquerdo
+                    if(toAcessMenu == 0) {
+                        if(oneMoreMenu > 0) {
+                            oneMoreMenu-=1;
+                            console.log("o oneMoreMenu no UP", oneMoreMenu)
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            console.log("o que tem no indiceMenu do UP", indiceMenu)
+                            if(indiceMenu != null || indiceMenu != undefined) {
+                                anterior = campo[+1];
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/index.html":
+                    moveUpLogin();
+                    break;
+                
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/info-selected-content/selectedcontent.html":
+                    moveUpSelectedContent();
+    
+                    break;
 
-        moveUpHome();
-
-
-
-        //parte para acessar e navegar o menu lateral esquerdo
-        if(toAcessMenu == 0) {
-            if(oneMoreMenu > 0) {
-                oneMoreMenu-=1;
-                console.log("o oneMoreMenu no UP", oneMoreMenu)
-                indiceMenu = campoMenu[oneMoreMenu];
-                console.log("o que tem no indiceMenu do UP", indiceMenu)
-                if(indiceMenu != null || indiceMenu != undefined) {
-                    anterior = campo[+1];
-                    indiceMenu.focus();
-                }
+                case "/pages/info-selected-content/selectedcontent.html":
+                    moveUpSelectedContent();
+    
+                    break;
+            
             }
-        }
+
+
+
         event.preventDefault();
         break;
         case KEYCODE.LEFT:
+            switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
+                    moveLeftHome();
 
-        moveLeftHome();
+                    //parte para acessar e navegar o menu lateral esquerdo
+                        if(unlockLeftMenu == true) {
+                            console.log("keycode left")
+                            //console.log("o meu access menu é", toAcessMenu)
+                                //menu[0].focus();
+                            if(toAcessMenu > 0) {
+                                toAcessMenu-=1;
+                                if(toAcessMenu == 0) {
+                                    console.log("o menu", menu[0]);
+                                    indiceMenu = campoMenu[0];
+                                    indiceMenu.focus();
+                                    console.log("o indice do menu é", indiceMenu);
+                                }
+                                console.log("to acess menu ", toAcessMenu)
+                            }
+            
+                        } 
+            
+                    //oneMore-=1;  
+                    //indice2 = campo[oneMore]
+            
+            
+                    //if(indice2 != null || indice2 != undefined) {
+                    //    anterior = campo[-1];
+                    //    indice2.focus();
+                    //}
+
+                break;
+                
+                case "/pages/catalog/catalog.html": 
+                    moveLeftHome();
+
+                    //parte para acessar e navegar o menu lateral esquerdo
+                        if(unlockLeftMenu == true) {
+                            console.log("keycode left")
+                            //console.log("o meu access menu é", toAcessMenu)
+                                //menu[0].focus();
+                            if(toAcessMenu > 0) {
+                                toAcessMenu-=1;
+                                if(toAcessMenu == 0) {
+                                    console.log("o menu", menu[0]);
+                                    indiceMenu = campoMenu[0];
+                                    indiceMenu.focus();
+                                    console.log("o indice do menu é", indiceMenu);
+                                }
+                                console.log("to acess menu ", toAcessMenu)
+                            }
+            
+                        } 
+            
+                    //oneMore-=1;  
+                    //indice2 = campo[oneMore]
+            
+            
+                    //if(indice2 != null || indice2 != undefined) {
+                    //    anterior = campo[-1];
+                    //    indice2.focus();
+                    //}
+
+                break;
+                
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/info-selected-content/selectedcontent.html":
+                    moveLeftSelectedContent();
+
+                    break;
+
+                case "/pages/info-selected-content/selectedcontent.html":
+                    moveLeftSelectedContent();
+        
+                    break;
+            }
 
 
-        //parte para acessar e navegar o menu lateral esquerdo
-        {/*
-            if(unlockLeftMenu == true) {
-                console.log("keycode left")
-                //console.log("o meu access menu é", toAcessMenu)
-                    //menu[0].focus();
-                if(toAcessMenu > 0) {
-                    toAcessMenu-=1;
-                    if(toAcessMenu == 0) {
-                        console.log("o menu", menu[0]);
-                        indiceMenu = campoMenu[0];
-                        indiceMenu.focus();
-                        console.log("o indice do menu é", indiceMenu);
-                    }
-                    console.log("to acess menu ", toAcessMenu)
-                }
-
-            } */}
-
-    	 //oneMore-=1;  
-        //indice2 = campo[oneMore]
-
-
-        //if(indice2 != null || indice2 != undefined) {
-        //    anterior = campo[-1];
-        //    indice2.focus();
-        //}
         event.preventDefault();
         break;
         case KEYCODE.RIGHT:
+            switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
+                    moveRightHome();
+                //var indice = campoCategory.getElementsByClassName('selectedCategoryCard')[oneMoreCard]
+        
+                //console.log("o que tem no indice", campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+                //console.log("o que tem no category", campoCategory)
+        
+                if(toAcessMenu >= 0 && toAcessMenu <1) {
+                    toAcessMenu+=1;
+                    indice = campo[oneMore]
+                    if(indice != null || indice != undefined) {
+                        auxDontCount = true;
+                        indice.focus();
+                    }
+                    //console.log("o que tem no campo ", campo)
+                    //console.log("o to acessMenu right", toAcessMenu)
+                }
+                console.log("keycode right")
+                // oneMore-=1;  
+                //indice2 = campo[oneMore]
+                //if(indice2 != null || indice2 != undefined) {
+                //    anterior = campo[-1];
+                //    indice2.focus();
+                //}
 
-            moveRightHome();
-        //var indice = campoCategory.getElementsByClassName('selectedCategoryCard')[oneMoreCard]
+                    break;
+                
+                case "/pages/catalog/catalog.html": 
+                    moveRightHome();
+                //var indice = campoCategory.getElementsByClassName('selectedCategoryCard')[oneMoreCard]
+        
+                //console.log("o que tem no indice", campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+                //console.log("o que tem no category", campoCategory)
+        
+                if(toAcessMenu >= 0 && toAcessMenu <1) {
+                    toAcessMenu+=1;
+                    indice = campo[oneMore]
+                    if(indice != null || indice != undefined) {
+                        auxDontCount = true;
+                        indice.focus();
+                    }
+                    //console.log("o que tem no campo ", campo)
+                    //console.log("o to acessMenu right", toAcessMenu)
+                }
+                console.log("keycode right")
+                // oneMore-=1;  
+                //indice2 = campo[oneMore]
+                //if(indice2 != null || indice2 != undefined) {
+                //    anterior = campo[-1];
+                //    indice2.focus();
+                //}
 
-        //console.log("o que tem no indice", campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard])
-        //console.log("o que tem no category", campoCategory)
+                    break;
+                
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/info-selected-content/selectedcontent.html":
+                    moveRightSelectedContent();
+                    break; 
 
-        if(toAcessMenu >= 0 && toAcessMenu <1) {
-            toAcessMenu+=1;
-            indice = campo[oneMore]
-            if(indice != null || indice != undefined) {
-                auxDontCount = true;
-                indice.focus();
+                case "/pages/info-selected-content/selectedcontent.html":
+                    moveRightSelectedContent();
+            
+                    break;
             }
-            //console.log("o que tem no campo ", campo)
-            //console.log("o to acessMenu right", toAcessMenu)
-        }
-        console.log("keycode right")
-    	// oneMore-=1;  
-        //indice2 = campo[oneMore]
-        //if(indice2 != null || indice2 != undefined) {
-        //    anterior = campo[-1];
-        //    indice2.focus();
-        //}
         event.preventDefault();
         break;
     }
   }
 
+//-------------------------
+  function moveDownLogin() {
+    if( oneMore < campo.length -1 ) {
+        oneMore+=1;
+        campo[oneMore].focus();
+    }
 
+  }
+  function moveUpLogin() {
+    if( oneMore > 0 ) {
+        oneMore-=1;
+        campo[oneMore].focus();
+    }
+  }
+
+
+//-------------------------
   function moveDownHome() {
     if(auxDontCount == true){
         if(oneMore >= 0) {
-            campo[oneMore].getElementsByClassName('cardDetails')[oneMoreCard].style.display = "none";
         }
         if(oneMore < campo.length -1) {
             oneMore+=1;
+            sessionStorage.setItem("indexCount", oneMore);
+            oneMoreCard = 0;
 
         }
         indice = campo[oneMore];
@@ -197,14 +382,14 @@ function onKeyDown(event) {
             //indice.focus();
             //indice.getElementsByClassName('selectedCategoryCard')[0].focus();
             var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
-            var toAddStyle = indice.getElementsByClassName('cardDetails')[oneMoreCard];
             //console.log("o add style", toAddStyle)
             //varia.scrollIntoView({
                 //    inline: "center",
                 //    behavior: "smooth"
+            indice.scrollIntoView({block: "center"})
+        
                 //})
             toFocus.focus();
-            toAddStyle.style.display = "block";
             //varia.classList.add("cardStyle");
             //console.log("o varia", toFocus)
             //console.log("o indice dentro do if", indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard])
@@ -216,28 +401,29 @@ function onKeyDown(event) {
   function moveUpHome() {
     if(auxDontCount == true) {
         if(oneMore > 0) {
-            campo[oneMore].getElementsByClassName('cardDetails')[oneMoreCard].style.display = "none";
         }
         if(oneMore > 0) {
             oneMore-=1;
+            sessionStorage.setItem("indexCount", oneMore);
+            oneMoreCard = 0;
         }
 
         indice = campo[oneMore];
         if(indice != null || indice != undefined) {
             anterior = campo[-1];
             var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
-            var toAddStyle = indice.getElementsByClassName('cardDetails')[oneMoreCard];
             //console.log("o add style", toAddStyle)
+            indice.scrollIntoView({block: "center"})
             toFocus.focus();
-            toAddStyle.style.display = "block";
         }
     }
 
   }
-
   function moveRightHome() {
     if(oneMoreCard >= 0) {
-        campo[oneMore].getElementsByClassName('cardDetails')[oneMoreCard].style.display = "none";
+        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+        //toFocus.scrollTo(0, 1000)
+        toFocus.scrollIntoView({ block: "center", inline: "center"});
     }
 
     indice = campo[oneMore];
@@ -260,17 +446,18 @@ function onKeyDown(event) {
                 console.log("o to acess menu right", toAcessMenu)
             }
             var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
-            var toAddStyle = indice.getElementsByClassName('cardDetails')[oneMoreCard];
-    
+            //toFocus.scrollTo(0, 1000)
+            //toFocus.scrollIntoView({ inline: "left"});
             toFocus.focus();
-            toAddStyle.style.display = "block";
         }
     }
 
   }
   function moveLeftHome() {
     if(oneMoreCard >= 0) {
-        campo[oneMore].getElementsByClassName('cardDetails')[oneMoreCard].style.display = "none";
+        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+        //toFocus.scrollTo(0, 1000)
+        //toFocus.scrollIntoView({ block: "center", inline: "center"});
     }
 
     indice = campo[oneMore];
@@ -288,10 +475,8 @@ function onKeyDown(event) {
                 console.log("to acess menu left", toAcessMenu);
             }
             var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
-            var toAddStyle = indice.getElementsByClassName('cardDetails')[oneMoreCard];
-      
+            toFocus.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest"});
             toFocus.focus();
-            toAddStyle.style.display = "block";
         }
 
         if(toAcessMenu == 0) {
@@ -310,7 +495,109 @@ function onKeyDown(event) {
     }
 
   }
+//-------------------------
 
+
+function moveDownSelectedContent() {
+    console.log("o campo", campo)
+
+    if(oneMore < campo.length -1) {
+        oneMore+=1;
+        oneMoreCard = 0;
+
+    }
+    indice = campo[oneMore];
+    //console.log("o que tem no campo ao apertar DOWN", indice)
+    //console.log("o que tem no length", campo.length)
+    if(indice != null || indice != undefined) {
+        //indice.focus();
+        //indice.getElementsByClassName('selectedCategoryCard')[0].focus();
+        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+        //console.log("o add style", toAddStyle)
+        //varia.scrollIntoView({
+            //    inline: "center",
+            //    behavior: "smooth"
+            //})
+        if(oneMore > 0) {
+            toFocus.scrollIntoView()
+
+        }
+
+        toFocus.focus();
+        //varia.classList.add("cardStyle");
+        //console.log("o varia", toFocus)
+        //console.log("o indice dentro do if", indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+        //console.log("o campo category", campoCategory)
+    }
+}
+function moveUpSelectedContent() {
+    if(oneMore > 0) {
+        oneMore-=1;
+        oneMoreCard = 0;
+    }
+
+    indice = campo[oneMore];
+    if(indice != null || indice != undefined) {
+        anterior = campo[-1];
+        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+        //console.log("o add style", toAddStyle)
+        toFocus.focus();
+    }
+}
+function moveLeftSelectedContent() {
+
+    indice = campo[oneMore];
+    if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
+        //console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
+        if(oneMoreCard > 0){
+            oneMoreCard-=1;
+            console.log("o onemorecard apertando o left", oneMoreCard)
+
+        }
+        if(oneMoreCard >= 0) {
+            if(toAcessMenu > 0) {
+                toAcessMenu-=1;
+                console.log("to acess menu left", toAcessMenu);
+            }
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+        }
+
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
+        //    inline: "left",
+      //      behavior: "smooth"
+    //    });
+
+
+    }
+}
+function moveRightSelectedContent() {
+
+    indice = campo[oneMore];
+    if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
+        console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
+        if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
+            oneMoreCard+=1;
+            console.log("o onemorecard apertando o right", oneMoreCard)
+        }
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
+        //    inline: "left",
+      //      behavior: "smooth"
+    //    });
+
+        if(oneMoreCard >= 0) {
+
+            if(toAcessMenu <= indice.getElementsByClassName('selectedCategoryCard').length -1) {
+                toAcessMenu+=1;
+                console.log("o to acess menu right", toAcessMenu)
+            }
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+        }
+    }
+}
 
 
  

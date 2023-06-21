@@ -1,12 +1,22 @@
 .slide {
-  width: 1920px;
+  width: 95%;
   height: 1080px;
-  margin: -27px 0px 0px 0px;
+  margin: -27px 0px 0px 5%;
   display: grid;
 }
 
+.leftShadow {
+  position: absolute;
+  width: 20px;
+  z-index: 5;
+  height: 1000px;
+  background: rgb(29,32,33);
+  background: linear-gradient(90deg, rgba(29,32,33,1) 0%, rgba(29,32,33,0.8) 20%, rgba(29,32,33,0.6) 40%, rgba(29,32,33,0.4) 60%, rgba(29,32,33,0.2) 80%, rgba(29,32,33,0) 100%);
+  top: 0%;
+}
+
 .slide-items {
-  width: 1920px;
+  width: 100%;
   height: 1080px;
   position: relative;
 }

@@ -2,73 +2,11 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/3.2.7/shaka-player.compiled.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <video id="video"controls autoplay></video>
-    <script type="text/javascript">
-	  function initApp() {
-		shaka.polyfill.installAll();
+	<script src="../../js/moTV/playerCalls/getEdgesAndStream.js"></script>
 
-		var video = document.getElementById('video');
-		var player = new shaka.Player(video);
-
-		player.configure({
-			drm: {
-				servers: {
-					'com.widevine.alpha': 'https://mw.yplay.com.br/widevine_proxy',
-				}
-			}
-		});
-
-		var devices_type = 'web player';
-		var devices_identification = 'Windows 10 pro, chrome';
-		var devices_hash = '2545249073';
-		var customers_token = localStorage.getItem('authorization'); // CHANGE ME
-		var profiles_id = localStorage.getItem('profileid'); // CHANGE ME
-		var version = '1.0.12';
-		var timestamp = parseInt(new Date().getTime() / 1000);
-		var offset = 0;
-		var edges_id = 277;
-
-		player.getNetworkingEngine().registerRequestFilter(function(type, request) {
-			var StringUtils = shaka.util.StringUtils;
-			var Uint8ArrayUtils = shaka.util.Uint8ArrayUtils;
-
-			if (type == shaka.net.NetworkingEngine.RequestType.LICENSE) {
-				request.headers['Authorization'] = 'Bearer ' + customers_token;
-				request.headers['profilesId'] = btoa(profiles_id);
-				request.headers['devicesType'] = btoa(devices_type);
-                request.headers['version'] = btoa(version);
-                request.headers['browserType'] = btoa('chrome');
-				var wrapped = {};
-				wrapped.timestamp = timestamp;
-				wrapped.offset = offset;
-				wrapped.edges_id = edges_id;
-				wrapped.devices_identification = devices_identification;
-				wrapped.devices_hash = devices_hash;
-				wrapped.rawLicense =
-					Uint8ArrayUtils.toBase64(new Uint8Array(request.body), false);
-
-				var wrappedJson = JSON.stringify(wrapped);
-				request.body = StringUtils.toUTF8(wrappedJson);
-			}
-		});
-		player.getNetworkingEngine().registerResponseFilter(function(type, response) {
-			var StringUtils = shaka.util.StringUtils;
-			var Uint8ArrayUtils = shaka.util.Uint8ArrayUtils;
-
-			if (type == shaka.net.NetworkingEngine.RequestType.LICENSE) {
-				var wrappedString = StringUtils.fromUTF8(response.data);
-				var wrapped = JSON.parse(wrappedString);
-				var rawLicense = wrapped.rawLicense;
-				response.data = Uint8ArrayUtils.fromBase64(rawLicense);
-			}
-		});
-        console.log("o player", player)
-		player.load('https://edge.hdor.yplay.com.br/s-yplay-mini02/channels/recordings/megapix-hd-74-271/2023/05/27/74-6468902aee969-2023-05-27-23-40-jurassic-world-reino-ameacado/data/74-6468902aee969-2023-05-27-23-40-jurassic-world-reino-ameacado-cenc.mpd');
-		video.play();
-	}
-	document.addEventListener('DOMContentLoaded', initApp);
-    </script>
   </body>
 </html>

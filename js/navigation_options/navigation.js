@@ -27,16 +27,18 @@
                 </div>
             </div>
 
-            <a href="../channels/channels.html">
-                <button class="navigationButton selectedMenuItem">
-                    <div class="navigationButtonIcon">
-                        <image src="../../images/magnifier.png"></image>
-                    </div>
-                    <div class="navigationButtonText">
-                        <h3>Pesquisar</h3>
-                    </div>
-                </button>
+            <a href="../search/search.html">
+            <button class="navigationButton selectedMenuItem">
+                <div class="navigationButtonIcon">
+                    <image src="../../images/magnifier.png"></image>
+                </div>
+                <div class="navigationButtonText">
+                    <h3>Pesquisar</h3>
+                </div>
+            </button>
             </a>
+
+        
 
             <a href="../catalog/catalog.html">
             <button class="navigationButton selectedMenuItem">
@@ -49,7 +51,7 @@
             </button>
             </a>
 
-            <a href="../player/player.html">
+            <a href="../channels/channels.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/watching-tv.png"></image>
@@ -60,7 +62,7 @@
             </button>
             </a>
 
-            <a href="../channels/channels.html">
+            <a href="../guide/guide.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/bullet-list.png"></image>
@@ -72,7 +74,7 @@
             </button>
             </a>
 
-            <a href="../channels/channels.html">
+            <a href="../movies/movies.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/watch-movie.png"></image>
@@ -104,6 +106,9 @@
                 </div>
             </button>
             </a>
+
+
+ 
 
         </div>
         <div class="navigationContent2"></div>

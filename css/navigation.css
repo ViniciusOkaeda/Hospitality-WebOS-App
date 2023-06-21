@@ -1,22 +1,21 @@
 .navigationContainer {
     width: auto;
-    min-width: 20%;
+    min-width: 10%;
     height: 1080px;
     position: fixed;
     left: 0;
-    z-index: 4;
+    z-index: 6;
     display: flex;
 }
 
 .selectedMenu {
-    background-color: rgba(35, 35, 35, 0.9);
-    opacity: 0.6;
+    background-color: rgba(29, 32, 33, 0);
+    opacity: 1;
 }
 
 .navigationContent1 {
     width: auto;
-    min-width: 160px;
-    box-shadow: 10px 0 50px -2px #1d1d1d;
+    min-width: 80px;
     padding: 0px 10px 0px 10px;
     display: flex;
     flex-direction: column;
@@ -27,20 +26,20 @@
 .navigationProfile {
     width: 80%;
     height: 120px;
-    margin: 50px auto 80px auto;
+    margin: 50px auto 50px auto;
     display: flex;
 }
 .navigationProfileImage{
     width: 50%;
-    max-width: 120px;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    min-width: 120px;
-    height: 100%;
+    max-width: 60px;
+    background-color: rgb(37, 37, 37);
+    min-width: 70px;
+    height: 60%;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top center;
     border-radius: 10px;
+
 }
 
 .navigationProfileText{
@@ -77,7 +76,7 @@ margin: 0
     width: 80%;
     display: flex;
     height: 90px;
-    margin: 15px auto;
+    margin: 5px auto;
 }
 
 
@@ -85,13 +84,13 @@ margin: 0
 
 .navigationButtonIcon {
     width: 50%;
-    max-width: 120px;
-    min-width: 120px;
+    max-width: 60px;
+    min-width: 60px;
     height: 100%;
 }
 
 .navigationButtonIcon img {
-    width: 35%;
+    width: 70%;
     margin: 15px auto;
     height: auto;
 

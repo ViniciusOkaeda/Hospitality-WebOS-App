@@ -1,0 +1,311 @@
+
+
+.initialImageBackground {
+    width: 1920px;
+    height: 1080px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    position: fixed;
+    z-index: 0;
+
+}
+
+.initialInfoContent {
+    width: 100%;
+    height: 1080px;
+    display: flex;
+    position: relative;
+}
+.initialInfo {
+    width: 100%;
+    height: 1080px;
+    padding-top: 380px;
+}
+
+.initialInfoTitle {
+    width: 80%;
+    height: 120px;
+    border-bottom: 1px solid white;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.infoTitle {
+    width: auto;
+    margin-right: 50px;
+    height: 100%;
+}
+
+.infoTitle h1 {
+    margin-top: 25px;
+}
+
+.infoRating {
+    width: 15%;
+    max-width: 100px;
+    height: 70%;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
+}
+
+.infoRating h2 {
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.initialInfoDetails {
+    width: 70%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+
+.initialInfoLogo {
+    width: auto;
+    height: 100%;
+}
+.infoChannelLogo {
+    width: 120px;
+    object-fit: contain;
+}
+
+.initialInfoTime {
+    width: 15%;
+    height: 100%;
+    text-align: center;
+}
+
+.initialInfoTime h4 {
+    margin-top: 25px;
+}
+
+.initialInfoGenres {
+    width: 25%;
+    height: 100%;
+    text-align: center;
+}
+
+.initialInfoGenres h4 {
+    margin-top: 25px;
+}
+
+.initialInfoButtons {
+    width: 70%;
+    height: 100px;
+    display: flex;
+}
+
+.infoButtonPlay {
+    width: 30%;
+    display: flex;
+    padding-left: 100px;
+    padding-top: 25px;
+    height: 100%;
+}
+
+.infoButtonPlay button {
+    width: 260px;
+    background-color: rgb(218, 218, 218);
+    color: #333;
+}
+
+.infoButtonMyList {
+    width: 30%;
+    height: 100%;
+    padding-top: 25px;
+
+}
+
+.infoButtonMyList button {
+    width: 350px;
+    background-color: rgb(218, 218, 218);
+    color: #333;
+}
+
+
+.initialInfoDescription {
+    width: 80%;
+    height: auto;
+}
+
+.infoDescription {
+    width: 100%;
+    height: 70%;
+}
+
+.infoDescription h3 {
+    padding-left: 100px;
+}
+
+.infoDirectors {
+    width: 100%;
+    height: 30%;
+}
+
+.infoDirectors h4 {
+    margin-top: 10px;
+    padding-left: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.eventRecomendationCards {
+    width: 100%;
+    height: 1080px;
+    margin-top: -140px;
+    background-color: rgba(33, 33, 33, 0.8);
+    position: relative;
+}
+
+.cardsInfoContainer {
+    width: 100%;
+    height: 95%;
+    padding-top: 10px;
+    margin: auto;
+}
+
+.cardsInfoTitle {
+    width: 100%;
+    height: 100px;
+    margin-left: 100px;
+
+}
+
+.cardsInfoList {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    overflow-x: auto;
+
+}
+
+.cardsInfoList::-webkit-scrollbar {
+    display: none;
+  }
+
+.cardsInfoList {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+.cardsInfo {
+    width: auto;
+    max-width: 450px;
+    min-width: 300px;
+    margin: 0px 10px 0px 10px;
+    flex-shrink: 0;
+    }
+    
+    .cardsInfo button{
+        width: 300px;
+        height: 400px;
+    }
+
+.cardsInfo:nth-child(1) {
+    margin-left: 100px;
+}
+
+.cardsInfoDescription {
+    width: 90%;
+    height: 340px;
+    margin-top: 40px;
+    margin-left: 100px;
+}
+
+.focusedCardContent {
+    width: 80%;
+    height: 100px;
+    display: flex;
+}
+
+.focusedCardTitle {
+    width: auto;
+    margin-right: 30px;
+    height: 100%;
+}
+
+.focusedCardEpisode {
+    width: auto;
+    padding: 0px 10px 0px 10px;
+    height: 100%;
+}
+
+.focusedCardRating {
+    width: 80px;
+    height: 70px;
+    border-radius: 7px;
+    margin-top: 15px;
+}
+
+.focusedCardRating h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.focusedCardContent2 {
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+
+.focusedCardLogo {
+    width: 200px;
+    margin-right: 20px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.focusedCardDuration {
+    width: 200px;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.focusedCardStart {
+    width: 300px;
+    height: 100%;
+}
+
+.focusedCardDescription {
+    width: 100%;
+    height: 140px;
+}
+
+.focusedCardDescription h4 {
+    height: 140px;
+    word-wrap: break-word;
+
+}
+
+
+.focusedNone {
+    display: none;
+}
+
+.selectedCategoryCard:focus-within {
+    transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms; 
+    border: 2px solid rgb(0, 136, 255);
+    position: relative;
+    opacity: 1;
+
+}

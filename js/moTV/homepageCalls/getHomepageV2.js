@@ -1,43 +1,58 @@
 
 function getHomepageV2()
 {
+    var contentLoaded = true;
 
+    console.log("document", document)
+    console.log("document read", document.readyState)
     //console.log("o navigation", navigationOptionsMenu)
     const auth = localStorage.getItem("authorization");
     const profile = localStorage.getItem("profileid");
     const language = 'pt';
-    const devicesType = 'web player';
+    const devicesType = 'webos';
 
+//https://mw.yplay.com.br/public/vod/getStreamUrlV3
+if(contentLoaded != true) {
+    document.getElementById("loadingContent").innerHTML = 
+    `
+    <div class="loaderContent">
+        <div class="loader"></div>
+    </div>
+    `
 
-
-    const loginRequest = axios.post('https://hospitality.youcast.tv.br/getHomepageV2', {
-        authorization: 'Bearer ' + auth,
-        includeData: true,
-        profileId: profile,
-        language: language,
-        devicesType: devicesType
-    })
-    .then(function (response) {
-        console.log("o response", response)
-        if(response.data.status == 1){
-            console.log("a home", response.data.response);
-            showSliderInitial(response.data.response);
-            //showBannerInitial(response.data.response);
-            showCategoriesCards(response.data.response);
-            //bloco para gerar imagem e informações do banner 
-
-            //fim do bloco do banner
-
-
-            //document.getElementById('myHomepageP').innerHTML = titleSelected.title;
-        }
-    }).catch(function (response) {
-        console.log("o response de erro", response)
-        
-    })
 }
 
-getHomepageV2();
+const getHomepageRequest = axios.post('https://hospitality.youcast.tv.br/getHomepageV2', {
+    authorization: 'Bearer ' + auth,
+    includeData: true,
+    profileId: profile,
+    language: language,
+    devicesType: devicesType
+})
+.then(function (response) {
+    console.log("o response", response)
+    if(response.data.status == 1){
+        console.log("a home", response.data.response);
+        if(contentLoaded == true) {
+            showSliderInitial(response.data.response);
+            showCategoriesCards(response.data.response);
+
+        }
+        //showBannerInitial(response.data.response);
+        //bloco para gerar imagem e informações do banner 
+
+        //fim do bloco do banner
+
+
+        //document.getElementById('myHomepageP').innerHTML = titleSelected.title;
+    }
+}).catch(function (response) {
+    console.log("o response de erro", response)
+    
+})
+
+}
+
 
 
 
@@ -52,6 +67,7 @@ function showSliderInitial(response) {
     document.getElementById('mySliderInitial').innerHTML = 
     `
     <div data-slide="slide" class="slide">
+        <div class="leftShadow"></div>
         <div class="slide-items">
     ${categorySelected.map((slide, idx) => { 
         
@@ -180,73 +196,6 @@ function showSliderInitial(response) {
     new SlideStories('slide');
 }
 
-function showBannerInitial(response) {
-    //console.log("tem response", response);
-    const haveImgWidescreen = response.map(e => e.data.filter(e => e.image_widescreen !== null && e.type === 'TV')).filter(e => e.length > 0) ;
-    const numero = Math.floor(Math.random() * haveImgWidescreen.length)
-    //console.log("a have imgcom numero", haveImgWidescreen[numero]);
-    const category = haveImgWidescreen[numero];
-    //console.log("a have cat", category.map(e => e));
-    const numero2 = Math.floor(Math.random() * category.length)
-    const titleSelected = category[numero2]
-    
-    document.getElementById('myHomepage').innerHTML = 
-    `
-    <div class="containerDestaque" 
-     style=" background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(29, 32, 33, 1) 85%), url(${titleSelected.image_widescreen !== "null" ? titleSelected.image_widescreen : titleSelected.image});     background-size: cover;
-     ">
-     <div class="bannerInfo">
-         <div>
-             <image src="${titleSelected.channels_logo}" style="width: 160px; margin-left: 30px; background-color: rgba(30, 30, 30, 0.6); border-radius: 5px"></image
-         </div>
-
-         <div class="bannerInfoTitle">
-             <div class="genresAndSeasonAndDuration">
-                 <div class="genres">
-                     <h6>Categoria: ${titleSelected.genres}</h6>
-
-                 </div> 
-
-                 <h6>${titleSelected.episode !== null ? "|" : ""}</h6>
-                 <div class="${titleSelected.episode !== null ? "season" : ""}">                             
-                 <h6>${titleSelected.episode !== null ? titleSelected.episode : ""}</h6>
-                 </div> 
-
-                 <h6>${titleSelected.duration !== null ? "|" : ""}</h6>
-                 <div class="duration">                             
-                 <h6>Duração: ${titleSelected.duration / 60}m</h6>
-                 </div> 
-             
-             </div>
-             <h1>${titleSelected.title}</h1>
-             <h4>${titleSelected.subtitle !== null ? titleSelected.subtitle + ': ' : ""}${titleSelected.description}</h4>
-         </div>
-
-         <div></div>
-
-         <div class="bannerRatingButton">
-             <div class="bannerButton">
-                 <button>Assistir Agora!</button>
-             </div>
-             <div class="bannerRating 
-             ${titleSelected.rating < 10 ? "bannerRatingL" : ''} 
-             ${titleSelected.rating == 10 ? "bannerRating10" : ''} 
-             ${titleSelected.rating == 12 ? "bannerRating12" : ''} 
-             ${titleSelected.rating == 14 ? "bannerRating14" : ''} 
-             ${titleSelected.rating == 16 ? "bannerRating16" : ''} 
-             ${titleSelected.rating == 18 ? "bannerRating18" : ''} 
-             
-             
-             ">
-                 <h2>${titleSelected.rating == 0 ? "L" : titleSelected.rating}</h2>
-             </div>
-         </div>
-    </div>
-     </div>
-    `;
-
-}
-
 function showCategoriesCards(response) {
 
     document.getElementById('contentCategories').innerHTML =
@@ -261,6 +210,7 @@ function showCategoriesCards(response) {
                         <h2  class="">${e.title}</h2>
                     </div>
 
+
                         <div class="cardFlex ">
                         ${e.data.map(e => {
                             return(`
@@ -268,38 +218,31 @@ function showCategoriesCards(response) {
                                 <div class="cardContainer">
                                     <div class="cardButton">
                                         <button
-                                            onfocus="getInfoCardSelected()"
-                                            onclick="storageContent(${e.channels_id ? e.channels_id : e.id})"
+                                            data-id=" ${e.id}"
+                                            data-duration="${e.duration}"
+                                            data-type="${e.type}"
+                                            data-channelId="${e.channels_id}"
+                                            data-start="${e.start}"
+                                            data-title="${e.title}"
+                                            data-description="${e.description}"
+                                            data-rating="${e.rating}"
+                                            data-end="${e.end}"
+                                            data-logo="${e.channels_logo}"
+                                            data-episode="${e.episode}"
+                                            data-subtitle="${e.subtitle}"
+
+                                            onfocus="showEventInfo()"
+                                            onclick="storageContent()"
                                             class="selectedCategoryCard"
                                             style="
                                                 background-image: url(${e.image}); 
                                                 background-size: cover; 
                                                 background-repeat: no-repeat;
-                                                background-position: top center;
-                                                object-fit: cover
+                                                background-position: center;
+                                                object-fit: contain
                                         "></button>
                                     </div>
-                                    <div class="cardInfo ">
-                                    <h3>${e.title}</h3>
-                                    </div>
-                                    <div class="cardDetails unlock">
-                                        <div class="cardDetailsTimeAndChannel">
-                                            <div class="cardTime">
-                                                <h4>${e.start}</h4>
-                                            </div>
-                                            <div class="cardChannel">
-                                            ${e.channels_logo ? `<image src="${e.channels_logo}"></image>` : ""}
-                                                
-                                            </div>
-                                        
-                                        </div>
-                                        <div class="cardDetailsRating"></div>
 
-                                        <div class="cardDetailsDescriptions">
-                                            <h4>${e.description}</h4>
-                                        </div>
-
-                                    </div>
                                 </div>
 
 
@@ -308,8 +251,10 @@ function showCategoriesCards(response) {
                             
                             `)
                         })}
-
-                        
+                        </div>
+                    
+                        <div class="cardMore moreCardInfoContent" id="moreCardInfo">
+                    
                         </div>
 
 
@@ -322,8 +267,98 @@ function showCategoriesCards(response) {
 
 }
 
-function storageContent(content) {
-    localStorage.setItem("contentId", content)
-    console.log("o content", content)
+function storageContent() {
+
+
+    //var result = Object.entries(objeto)
+    //var str = idVod2;
+    //localStorage.setItem("contentId", idVod2)
+    switch(event.target.dataset.type) {
+
+        case "TV":
+            console.log("foi a tv");
+            console.log("foi a tv", event.target.dataset);
+            localStorage.setItem("idContent", event.target.dataset.channelid)
+            localStorage.setItem("event", event.target.dataset.id)
+            localStorage.setItem("type", event.target.dataset.type)
+            var timestmp = Date.parse(event.target.dataset.start) / 1000
+            localStorage.setItem("startAt", timestmp)
+
+            console.log("o timestm", timestmp)
+            window.location.href = '../../pages/info-selected-content/selectedcontent.html'
+            break;
+        
+        case "VOD":
+            console.log("foi o vod", event.target.dataset);
+            localStorage.setItem("idContent", event.target.dataset.id)
+            localStorage.setItem("event", event.target.dataset.id)
+            localStorage.setItem("type", event.target.dataset.type)
+            window.location.href = '../../pages/info-selected-content/selectedcontent.html'
+            break;
+
+        case "Category":
+            console.log("foi o category", event.target.dataset);
+            localStorage.setItem("idContent", event.target.dataset.id)
+            localStorage.setItem("event", event.target.dataset.id)
+            localStorage.setItem("type", event.target.dataset.type)
+            //window.location.href = '../../pages/player/player.html'
+            break;
+    }
+    console.log("o evento", event.target.dataset)
+    //console.log("o idChannel", idChannel)
+    //console.log("o type", type)
 }
+
+function showEventInfo() {
+    console.log("o event", event.target.dataset)
+    var indexCard = parseInt(sessionStorage.getItem("indexCount"));
+    console.log("o document", document.querySelectorAll(".moreCardInfoContent"))
+    document.querySelectorAll(".moreCardInfoContent")[indexCard].innerHTML = 
+    `
+    <div class="focusedCardContent">
+        <div class="focusedCardTitle">
+            <h3>${event.target.dataset.title}</h3>
+        </div>
+
+        <div class="${event.target.dataset.episode != "null" ? "focusedCardEpisode" : "focusedNone"}">
+            <h3 class="${event.target.dataset.episode == "null" ? "focusedNone" : ""}">${event.target.dataset.episode}</h3>
+        </div>
+
+        <div class="focusedCardRating
+            ${event.target.dataset.rating < 10 ? "bannerRatingL" : ''} 
+            ${event.target.dataset.rating == 10 ? "bannerRating10" : ''} 
+            ${event.target.dataset.rating == 12 ? "bannerRating12" : ''} 
+            ${event.target.dataset.rating == 14 ? "bannerRating14" : ''} 
+            ${event.target.dataset.rating == 16 ? "bannerRating16" : ''} 
+            ${event.target.dataset.rating == 18 ? "bannerRating18" : ''}
+        "><h3>${event.target.dataset.rating == 0 ? "L" : event.target.dataset.rating}</h3>
+        </div>
+    </div>
+
+    <div class="${event.target.dataset.logo != "undefined" || event.target.dataset.duration != "undefined" ? "focusedCardContent2" : "focusedNone"}">
+        <div 
+        class="${event.target.dataset.logo != "undefined" ? "focusedCardLogo" : "focusedNone"}" 
+        style="background-image: url(${event.target.dataset.logo}); height: 100%;"
+        ></div>
+
+        <div class="focusedCardDuration">
+            <h4>Duração: ${event.target.dataset.duration / 60}m</h4>
+        </div>
+
+        <div class="${event.target.dataset.start != "undefined" ? "focusedCardStart" : "focusedNone"}">
+            <h4>${event.target.dataset.start}</h4>
+        </div>
+    </div>
+
+    <div class="focusedCardDescription">
+        <h4>${event.target.dataset.description}</h4>
+    </div>
+    `
+
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', getHomepageV2());
 

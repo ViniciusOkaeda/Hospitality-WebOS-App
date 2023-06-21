@@ -9,7 +9,7 @@
 
 
 .bannerInfo {
-    width: 80%;
+    width: 95%;
     height: 500px;
     margin: 0px auto;
     padding-top: 160px;
@@ -67,7 +67,7 @@
 .bannerRating {
     height: 60%;
     width: 7%;
-    margin-right: 50px;
+    margin-right: 250px;
     border-radius: 7px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 7px 29px 0px;
 }
@@ -77,26 +77,6 @@
     margin-top: 15px;
     width: 100%;
     height: 100%;
-}
-
-.bannerRatingL {
-    background-color: #569b49;
-}
-
-.bannerRating10 {
-    background-color: #5891cd;
-}
-.bannerRating12 {
-    background-color: #f0cc17;
-}
-.bannerRating14 {
-    background-color: #d67c1c;
-}
-.bannerRating16 {
-    background-color: #c1131e;
-}
-.bannerRating18 {
-    background-color: #1c1b19;
 }
 
 .bannerRating h3 {
@@ -118,11 +98,20 @@
     height: 65px;
 }
 
+
+
+
+
+
+
+
+
+
 .containerCategories {
-    width: 85%;
+    width: 95%;
     max-width: 1728px;
-    height: 1100px;
-    margin-left: 10%;
+    height: 750px;
+    margin-left: 5%;
     position: relative;
 }
 
@@ -132,18 +121,24 @@
 }
 
 .cardTitle {
-    width: 100%;
+    width: 90%;
     height: 80px;
+    margin-left: 5%;
     margin-bottom: 40px;
     margin-top: 70px;
+}
+
+.cardMore {
+    width: 95%;
+    margin-left: 5%;
+    height: 340px;
+    margin-bottom: 20px;
 }
 
 .cardFlex {
     width: auto;
     display: flex;
-    flex-flow: row nowrap;
     max-width: 95%;
-    gap: 25px;
     overflow-x: auto;
 }
 
@@ -160,94 +155,103 @@
 .cardContainer {
 width: auto;
 max-width: 450px;
-min-width: 365px;
-min-height: 850px;
+min-width: 242px;
+min-height: 350px;
 flex-shrink: 0;
 }
 
+.cardButton:nth-child(1) {
+padding-left: 15%;
+}
+
 .cardButton button{
-    width: 365px;
-    height: 550px;
+    width: 242px;
+    height: 350px;
+    margin: 0px 10px 0px 10px;
 }
 
 
-.cardInfo {
-    width: 300px;
-    height: auto;
-    margin: auto;
-    min-height: 100px;
-    text-align: center;
-    word-wrap: break-word;
+
+
+.focusedCardContent {
+    width: 80%;
+    height: 100px;
+    display: flex;
 }
 
-.cardDetails {
+.focusedCardTitle {
     width: auto;
-    height: auto;
-    min-height: 200px;
-    background-color: red;
+    margin-right: 30px;
+    height: 100%;
+}
+
+.focusedCardEpisode {
+    width: auto;
+    padding: 0px 10px 0px 10px;
+    height: 100%;
+}
+
+.focusedCardRating {
+    width: 80px;
+    height: 70px;
+    border-radius: 7px;
+    margin-top: 15px;
+}
+
+.focusedCardRating h3 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.focusedCardContent2 {
+    width: 100%;
+    height: 80px;
+    display: flex;
+}
+
+.focusedCardLogo {
+    width: 200px;
+    margin-right: 20px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.focusedCardDuration {
+    width: 200px;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.focusedCardStart {
+    width: 300px;
+    height: 100%;
+}
+
+.focusedCardDescription {
+    width: 100%;
+    height: 140px;
+}
+
+.focusedCardDescription h4 {
+    height: 140px;
+    word-wrap: break-word;
+
+}
+
+
+.focusedNone {
     display: none;
 }
 
 
-
-.cardDetailsTimeAndChannel{
-    width: 100%;
-    display: flex;
-    height: 50%;
-    justify-content: center;
-    align-items: center;
-    background-color: yellow;
-}
-
-.cardDetailsRating{
-    width: 100%;
-    display: flex;
-    height: 50%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 0, 212);
-}
-.cardDetailsDescriptions{
-    width: 100%;
-    display: flex;
-    height: 50%;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(0, 221, 255);
-}
-
-.cardDetailsDescriptions h4 {
-    width: 450px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.cardTime{
-    width: 80%;
-}
-
-.cardChannel img {
-    width: 100px;
-}
-
-.cardDetailsDescriptions{
-    width: 100%;
-    display: flex;
-    height: 50%;
-    background-color: rgb(111, 0, 255);
-}
-
-
 .selectedCategoryCard:focus-within {
-        width: 450px;
-        height: 650px;
         transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms; 
-        border: 1px solid white;
+        border: 8px solid rgb(3, 141, 255);
         opacity: 1;
 
   }
 .cardStyle {
     opacity: 1; 
-    transform: scale(1.3); 
 }
 
