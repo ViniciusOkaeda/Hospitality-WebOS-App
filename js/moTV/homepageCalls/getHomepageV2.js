@@ -2,7 +2,7 @@
 function getHomepageV2()
 {
     var contentLoaded = true;
-
+    var loaded = document.getElementById("loadingContent");
     console.log("document", document)
     console.log("document read", document.readyState)
     //console.log("o navigation", navigationOptionsMenu)
@@ -12,15 +12,7 @@ function getHomepageV2()
     const devicesType = 'webos';
 
 //https://mw.yplay.com.br/public/vod/getStreamUrlV3
-if(contentLoaded != true) {
-    document.getElementById("loadingContent").innerHTML = 
-    `
-    <div class="loaderContent">
-        <div class="loader"></div>
-    </div>
-    `
-
-}
+showLoading();
 
 const getHomepageRequest = axios.post('https://hospitality.youcast.tv.br/getHomepageV2', {
     authorization: 'Bearer ' + auth,
@@ -33,11 +25,10 @@ const getHomepageRequest = axios.post('https://hospitality.youcast.tv.br/getHome
     console.log("o response", response)
     if(response.data.status == 1){
         console.log("a home", response.data.response);
-        if(contentLoaded == true) {
-            showSliderInitial(response.data.response);
-            showCategoriesCards(response.data.response);
+        loaded.style.display = "none";
+        showSliderInitial(response.data.response);
+        showCategoriesCards(response.data.response);
 
-        }
         //showBannerInitial(response.data.response);
         //bloco para gerar imagem e informações do banner 
 
@@ -53,6 +44,23 @@ const getHomepageRequest = axios.post('https://hospitality.youcast.tv.br/getHome
 
 }
 
+function showLoading() {
+    document.getElementById("loadingContent").innerHTML = 
+    `
+    <div class="loaderContent">
+        <div class="loader">
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__bar"></div>
+            <div class="loader__ball"></div>      
+        </div>
+
+        <div><h3>Carregando...</h3></div>
+    </div>
+    `
+}
 
 
 

@@ -1,0 +1,55 @@
+.focusedContainer {
+    width: 95%;
+    margin-left: 5%;
+    height: 450px;
+    background-color: red;
+    display: flex;
+}
+
+.focusedTextInfo {
+width: 60%;
+height: 100%;
+}
+
+.focusedImageInfo {
+width: 40%;
+height: 100%;
+background-color: rgb(33, 42, 161);
+}
+
+.channelCategoriesContent {
+    width: 95%;
+    margin-left: 5%;
+    height: 100px;
+    overflow: scroll;
+    display: flex;
+    color: #1d2021;
+}
+.channelCategoriesContent::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .channelCategoriesContent {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+.channelButton{
+    width: 90px;
+    margin: auto 10px;
+    background-color: white;
+    color: #333;
+    font-size: 1rem;
+    height: 45px;
+}
+
+.channelButton:nth-child(1) {
+    margin-left: 5%;
+    }
+
+.Bar {
+    font-size: 3rem;
+    color: white;
+    margin-top: 15px;
+}

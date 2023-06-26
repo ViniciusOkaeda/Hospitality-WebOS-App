@@ -30,7 +30,7 @@
             <a href="../search/search.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/magnifier.png"></image>
+                    <image src="../../images/find.png"></image>
                 </div>
                 <div class="navigationButtonText">
                     <h3>Pesquisar</h3>
