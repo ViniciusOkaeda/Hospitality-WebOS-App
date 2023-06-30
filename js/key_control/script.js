@@ -45,6 +45,10 @@ var auxDontCount = true;
 var oneMoreCard = 0;
 var focusedCard = false;
 
+//variavel auxiliar p navegação entre canais
+var oneMoreChannelVertical = 0;
+var oneMoreChannelHorizontal = 0;
+
 //variaveis para acesso e navegação do menu lateral esquerdo
 var firstDownKey = false;
 var oneMoreMenu = 0;
@@ -74,6 +78,59 @@ function onKeyDown(event) {
         
         case KEYCODE.DOWN:
             switch(window.location.pathname) {
+
+                
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/channels/channels.html": 
+                    console.log("keycode down");
+                    moveDownHome();
+                    //console.log("o indice é", indice)
+                    //aqui começa para acessar o menu lateral esquerdo
+                    firstDownKey = true
+                    if(firstDownKey == true) {
+                        unlockLeftMenu = true;
+                    }
+            
+                    if(toAcessMenu == 0 && unlockLeftMenu == true) {
+                        if(oneMoreMenu < campoMenu.length -1) {
+                            auxDontCount = false;
+                            oneMoreMenu+=1;
+                            console.log("o que tem no campo menu", campoMenu);
+                            console.log("o onemore no down", oneMoreMenu);
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
+                                console.log("o indicemenu", indiceMenu)
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+                case "/pages/channels/channels.html": 
+                    console.log("keycode down");
+                    moveDownSelectedChannels();
+                    //console.log("o indice é", indice)
+                    //aqui começa para acessar o menu lateral esquerdo
+                    firstDownKey = true
+                    if(firstDownKey == true) {
+                        unlockLeftMenu = true;
+                    }
+            
+                    if(toAcessMenu == 0 && unlockLeftMenu == true) {
+                        if(oneMoreMenu < campoMenu.length -1) {
+                            auxDontCount = false;
+                            oneMoreMenu+=1;
+                            console.log("o que tem no campo menu", campoMenu);
+                            console.log("o onemore no down", oneMoreMenu);
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
+                                console.log("o indicemenu", indiceMenu)
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+
                 case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
                     console.log("keycode down");
                     moveDownHome();
@@ -144,6 +201,57 @@ function onKeyDown(event) {
         break;
         case KEYCODE.UP:
             switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/channels/channels.html": 
+                    console.log("keycode down");
+                    moveDownHome();
+                    //console.log("o indice é", indice)
+                    //aqui começa para acessar o menu lateral esquerdo
+                    firstDownKey = true
+                    if(firstDownKey == true) {
+                        unlockLeftMenu = true;
+                    }
+            
+                    if(toAcessMenu == 0 && unlockLeftMenu == true) {
+                        if(oneMoreMenu < campoMenu.length -1) {
+                            auxDontCount = false;
+                            oneMoreMenu+=1;
+                            console.log("o que tem no campo menu", campoMenu);
+                            console.log("o onemore no down", oneMoreMenu);
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
+                                console.log("o indicemenu", indiceMenu)
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+                case "/pages/channels/channels.html": 
+                    console.log("keycode up");
+                    moveUpSelectedChannels();
+                    //console.log("o indice é", indice)
+                    //aqui começa para acessar o menu lateral esquerdo
+                    firstDownKey = true
+                    if(firstDownKey == true) {
+                        unlockLeftMenu = true;
+                    }
+            
+                    if(toAcessMenu == 0 && unlockLeftMenu == true) {
+                        if(oneMoreMenu < campoMenu.length -1) {
+                            auxDontCount = false;
+                            oneMoreMenu+=1;
+                            console.log("o que tem no campo menu", campoMenu);
+                            console.log("o onemore no down", oneMoreMenu);
+                            indiceMenu = campoMenu[oneMoreMenu];
+                            if(indiceMenu != null || indiceMenu != undefined && oneMoreMenu <7) {
+                                console.log("o indicemenu", indiceMenu)
+                                indiceMenu.focus();
+                            }
+                        }
+                    }
+                    break;
+                
+
                 case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
                     moveUpHome();
                     //parte para acessar e navegar o menu lateral esquerdo
@@ -280,6 +388,23 @@ function onKeyDown(event) {
         break;
         case KEYCODE.RIGHT:
             switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/channels/channels.html": 
+                console.log("keycode down");
+                moveDownHome();
+                //console.log("o indice é", indice)
+                //aqui começa para acessar o menu lateral esquerdo
+
+                break;
+            
+            case "/pages/channels/channels.html": 
+                console.log("keycode up");
+                moveRightSelectedChannels();
+                //console.log("o indice é", indice)
+                //aqui começa para acessar o menu lateral esquerdo
+                
+                break;
+            
+
                 case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
                     moveRightHome();
                 //var indice = campoCategory.getElementsByClassName('selectedCategoryCard')[oneMoreCard]
@@ -580,6 +705,196 @@ function moveRightSelectedContent() {
         console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
         if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
             oneMoreCard+=1;
+            console.log("o onemorecard apertando o right", oneMoreCard)
+        }
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
+        //    inline: "left",
+      //      behavior: "smooth"
+    //    });
+
+        if(oneMoreCard >= 0) {
+
+            if(toAcessMenu <= indice.getElementsByClassName('selectedCategoryCard').length -1) {
+                toAcessMenu+=1;
+                console.log("o to acess menu right", toAcessMenu)
+            }
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+        }
+    }
+}
+
+//---------------------------------------
+function moveDownSelectedChannels() {
+    console.log("o campo", campo)
+    //console.log("o oneMore é", oneMore)
+    oneMoreChannelVertical +=1;
+    console.log("o oneMoreChannel é", oneMoreChannelVertical)
+
+    if(oneMore < 1) {
+        oneMore+=1;
+        console.log("o oneMore", oneMore);
+        indice = campo[oneMore];
+        if(indice != null || indice != undefined) {
+        
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+            //indice.focus();
+            //indice.getElementsByClassName('selectedCategoryCard')[0].focus();
+            //console.log("o add style", toAddStyle)
+            //varia.scrollIntoView({
+                //    inline: "center",
+                //    behavior: "smooth"
+                //})
+    
+    
+            //varia.classList.add("cardStyle");
+            //console.log("o varia", toFocus)
+            //console.log("o indice dentro do if", indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+            //console.log("o campo category", campoCategory)
+        }
+
+    }
+
+    if(oneMoreChannelVertical >= 3) {
+        indice = campo[oneMore];
+        if(indice != null || indice != undefined) {
+            
+            var limitNavigate = indice.getElementsByClassName('selectedCategoryCard').length;
+            console.log("o teste", limitNavigate)
+            if(limitNavigate - oneMoreCard >= 5) {
+                oneMoreCard +=5;
+
+            } else {
+                oneMoreChannelVertical -=1;
+            }
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+            //indice.focus();
+            //indice.getElementsByClassName('selectedCategoryCard')[0].focus();
+            //console.log("o add style", toAddStyle)
+            //varia.scrollIntoView({
+                //    inline: "center",
+                //    behavior: "smooth"
+                //})
+    
+    
+            //varia.classList.add("cardStyle");
+            //console.log("o varia", toFocus)
+            //console.log("o indice dentro do if", indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+            //console.log("o campo category", campoCategory)
+        }
+        console.log("o oneMoreCard é", oneMoreCard)
+    }
+    //console.log("o que tem no campo ao apertar DOWN", indice)
+    //console.log("o que tem no length", campo.length)
+
+}
+function moveUpSelectedChannels() {
+    console.log("o campo", campo)
+    //console.log("o oneMore é", oneMore)
+    if(oneMoreChannelVertical > 0) {
+        oneMoreChannelVertical -=1;
+
+    }
+    console.log("o oneMoreChannel é", oneMoreChannelVertical)
+
+    if(oneMoreChannelVertical < 2 && oneMore > 0) {
+        oneMore-=1;
+        console.log("o oneMore", oneMore);
+        indice = campo[oneMore];
+        if(indice != null || indice != undefined) {
+        
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+            //indice.focus();
+            //indice.getElementsByClassName('selectedCategoryCard')[0].focus();
+            //console.log("o add style", toAddStyle)
+            //varia.scrollIntoView({
+                //    inline: "center",
+                //    behavior: "smooth"
+                //})
+    
+    
+            //varia.classList.add("cardStyle");
+            //console.log("o varia", toFocus)
+            //console.log("o indice dentro do if", indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+            //console.log("o campo category", campoCategory)
+        }
+
+    }
+
+    if(oneMoreChannelVertical >= 3) {
+        indice = campo[oneMore];
+        if(indice != null || indice != undefined) {
+            
+            var limitNavigate = indice.getElementsByClassName('selectedCategoryCard').length;
+            console.log("o teste", limitNavigate)
+            if(limitNavigate - oneMoreCard >= 5) {
+                oneMoreCard -=5;
+
+            }
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+            //indice.focus();
+            //indice.getElementsByClassName('selectedCategoryCard')[0].focus();
+            //console.log("o add style", toAddStyle)
+            //varia.scrollIntoView({
+                //    inline: "center",
+                //    behavior: "smooth"
+                //})
+    
+    
+            //varia.classList.add("cardStyle");
+            //console.log("o varia", toFocus)
+            //console.log("o indice dentro do if", indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard])
+            //console.log("o campo category", campoCategory)
+        }
+        console.log("o oneMoreCard é", oneMoreCard)
+    }
+    //console.log("o que tem no campo ao apertar DOWN", indice)
+    //console.log("o que tem no length", campo.length)
+
+}
+function moveLeftSelectedChannels() {
+
+    indice = campo[oneMore];
+    if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
+        //console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
+        if(oneMoreCard > 0){
+            oneMoreCard-=1;
+            console.log("o onemorecard apertando o left", oneMoreCard)
+
+        }
+        if(oneMoreCard >= 0) {
+            if(toAcessMenu > 0) {
+                toAcessMenu-=1;
+                console.log("to acess menu left", toAcessMenu);
+            }
+            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+            toFocus.focus();
+        }
+
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
+        //    inline: "left",
+      //      behavior: "smooth"
+    //    });
+
+
+    }
+}
+function moveRightSelectedChannels() {
+
+    indice = campo[oneMore];
+    if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
+        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
+        console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
+        if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
+            if(oneMoreChannelHorizontal < 4) {
+                oneMoreChannelHorizontal+=1;
+                oneMoreCard+=1;
+            }
             console.log("o onemorecard apertando o right", oneMoreCard)
         }
         //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({

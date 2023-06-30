@@ -269,7 +269,10 @@ function showEventRecomendations(response) {
 
 function showFocusedCardInfo() {
     console.log("o event", event.target.dataset)
+    const dataCriada = new Date(event.target.dataset.start);
+    const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(dataCriada);
     document.getElementById("focusedCard").innerHTML = 
+    
     `
     <div class="focusedCardContent">
         <div class="focusedCardTitle">
@@ -302,7 +305,7 @@ function showFocusedCardInfo() {
         </div>
 
         <div class="${event.target.dataset.start != "undefined" ? "focusedCardStart" : "focusedNone"}">
-            <h4>${event.target.dataset.start}</h4>
+            <h4>${formatedDate}</h4>
         </div>
     </div>
 

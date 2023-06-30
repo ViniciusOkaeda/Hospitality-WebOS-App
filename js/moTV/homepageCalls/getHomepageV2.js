@@ -212,14 +212,14 @@ function showCategoriesCards(response) {
         //console.log("o e", e)
         return(`
             <div class="containerCategories">
-                <div class="contentCategories selected">
+                <div class="contentCategories ">
             
                     <div class="cardTitle">
                         <h2  class="">${e.title}</h2>
                     </div>
 
 
-                        <div class="cardFlex ">
+                        <div class="cardFlex selected">
                         ${e.data.map(e => {
                             return(`
                             <div id="cardSelectedPick">
