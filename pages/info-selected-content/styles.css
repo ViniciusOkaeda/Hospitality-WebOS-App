@@ -302,10 +302,4 @@
     display: none;
 }
 
-.selectedCategoryCard:focus-within {
-    transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms; 
-    border: 2px solid rgb(0, 136, 255);
-    position: relative;
-    opacity: 1;
 
-}

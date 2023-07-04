@@ -27,7 +27,9 @@ const fullDate2 = currentYear + "-" + getMonthFormated + "-" + getDayFormated + 
 const fullDate3 = currentYear + "-" + getMonthFormated + "-" + getDayFormated
 const stringDate = fullDate.toString();
 
-//console.log ("o str date", stringDate)
+console.log ("o fullDate", fullDate)
+console.log ("o fullDate2", fullDate2)
+console.log ("o fullDate3", fullDate3)
 
 
 async function getSubscribedChannels() {
@@ -188,14 +190,26 @@ function showFocusedChannel() {
         `
     }else if(event.target.dataset != undefined){
         const eventDetails = event.target.dataset
+        console.log("o eventDetails", eventDetails)
         //const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(eventDetails.channels_start).toISOString()
         //console.log("formatou", formatedDate)
         //console.log("formatou", eventDetails.channels_start.toLocaleDateString('pt-BR'))
         //console.log("tem epg2", event.target.dataset)
         const dataCriada = new Date(eventDetails.channels_start);
-        const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(dataCriada);
-        //console.log("data formatada", dataFormatada)
+        console.log("a dataCriada", dataCriada)
+        //const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(dataCriada);
+        //console.log("data formatada", formatedDate)
         localStorage.setItem("selectedChannel", event.target.dataset.channels_id)
+
+        const elements = document.querySelectorAll('.focusedShowDescription h4')
+        const LIMIT = 15;
+
+        for(let h4 of elements) {
+            const aboveLimit = h4.innerText.length > LIMIT;
+            const dotOrEmpty = aboveLimit ? '...' : ''
+            h4.innerText = h4.innerText.substring(0, LIMIT) + dotOrEmpty
+        }
+
         document.getElementById("focusedChannel").innerHTML = 
         `
         <div class="focusedContainer">
@@ -214,7 +228,7 @@ function showFocusedChannel() {
                         <h6>|</h6>
                         ${eventDetails.channels_season_and_ep !== "null" ? `<h6>${eventDetails.channels_season_and_ep}</h6>` : ''}
                         ${eventDetails.channels_season_and_ep !== "null" ? `<h6>|</h6>` : ''}
-                        <h6>Início em: ${formatedDate}</h6>
+                        <h6>Início em: ${eventDetails.channels_start}</h6>
                     </div>
 
                     <div class="focusedShowDescription">
@@ -315,7 +329,7 @@ document.getElementById("allChannels").innerHTML =
             return(`
             <div class="channelContainer">
                 <button class="channelButtonShow selectedCategoryCard"
-                onclick="showFocusedChannel()"
+                onfocus="showFocusedChannel()"
                 data-channels_id="${item.channels_id}"
                 data-channels_name="${item.channels_name}"
                 data-channels_logo="${item.channels_logo}"

@@ -82,7 +82,7 @@ function onKeyDown(event) {
                 
                 case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/channels/channels.html": 
                     console.log("keycode down");
-                    moveDownHome();
+                    moveDownSelectedChannels();
                     //console.log("o indice é", indice)
                     //aqui começa para acessar o menu lateral esquerdo
                     firstDownKey = true
@@ -390,7 +390,7 @@ function onKeyDown(event) {
             switch(window.location.pathname) {
                 case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/channels/channels.html": 
                 console.log("keycode down");
-                moveDownHome();
+                moveRightSelectedChannels();
                 //console.log("o indice é", indice)
                 //aqui começa para acessar o menu lateral esquerdo
 
@@ -733,6 +733,8 @@ function moveDownSelectedChannels() {
 
     if(oneMore < 1) {
         oneMore+=1;
+        oneMoreCard = 0;
+        oneMoreChannelHorizontal = 0;
         console.log("o oneMore", oneMore);
         indice = campo[oneMore];
         if(indice != null || indice != undefined) {
@@ -762,7 +764,7 @@ function moveDownSelectedChannels() {
             
             var limitNavigate = indice.getElementsByClassName('selectedCategoryCard').length;
             console.log("o teste", limitNavigate)
-            if(limitNavigate - oneMoreCard >= 5) {
+            if(limitNavigate - oneMoreCard >= 6) {
                 oneMoreCard +=5;
 
             } else {
@@ -796,12 +798,14 @@ function moveUpSelectedChannels() {
     if(oneMoreChannelVertical > 0) {
         oneMoreChannelVertical -=1;
 
+        console.log("o oneMoreChannel é", oneMoreChannelVertical)
     }
-    console.log("o oneMoreChannel é", oneMoreChannelVertical)
 
-    if(oneMoreChannelVertical < 2 && oneMore > 0) {
+    if(oneMoreChannelVertical == 1) {
         oneMore-=1;
+        oneMoreCard = 0;
         console.log("o oneMore", oneMore);
+        console.log("o oneMore", oneMoreChannelVertical);
         indice = campo[oneMore];
         if(indice != null || indice != undefined) {
         
@@ -824,13 +828,13 @@ function moveUpSelectedChannels() {
 
     }
 
-    if(oneMoreChannelVertical >= 3) {
+    if(oneMoreChannelVertical >= 2) {
         indice = campo[oneMore];
         if(indice != null || indice != undefined) {
             
             var limitNavigate = indice.getElementsByClassName('selectedCategoryCard').length;
             console.log("o teste", limitNavigate)
-            if(limitNavigate - oneMoreCard >= 5) {
+            if(limitNavigate - oneMoreCard >= 6) {
                 oneMoreCard -=5;
 
             }
@@ -890,12 +894,27 @@ function moveRightSelectedChannels() {
     if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
         //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
         console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
-        if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
-            if(oneMoreChannelHorizontal < 4) {
-                oneMoreChannelHorizontal+=1;
-                oneMoreCard+=1;
+        if(oneMore == 0) {
+            console.log("tamanho", indice.getElementsByClassName('selectedCategoryCard').length)
+            if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
+                if(oneMoreChannelHorizontal < indice.getElementsByClassName('selectedCategoryCard').length) {
+                    oneMoreChannelHorizontal+=1;
+                    oneMoreCard+=1;
+                }
+                console.log("o onemorecard apertando o right", oneMoreCard)
             }
-            console.log("o onemorecard apertando o right", oneMoreCard)
+        }
+        
+        
+        if(oneMore == 1) {
+            if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
+                if(oneMoreChannelHorizontal < 4) {
+                    oneMoreChannelHorizontal+=1;
+                    oneMoreCard+=1;
+                }
+                console.log("o onemorecard apertando o right", oneMoreCard)
+            }
+
         }
         //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
         //    inline: "left",

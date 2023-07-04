@@ -2,14 +2,14 @@
     width: 95%;
     margin-top: -10px;
     margin-left: 5%;
-    height: 450px;
+    height: 550px;
     position: fixed;
     background-color: #1d2021;
     display: flex;
 }
 
 .focusedTextInfo {
-width: 60%;
+width: 50%;
 height: 100%;
 padding-left: 5%;
 }
@@ -94,7 +94,7 @@ padding-left: 5%;
 }
 
 .focusedImageInfo {
-width: 40%;
+width: 50%;
 height: 100%;
 background-position: center;
 background-size: cover;
@@ -105,6 +105,7 @@ background-repeat: no-repeat;
 .shadowLeft {
     width: 100%;
     height: 100%;
+    margin-left: -1px;
     background-color: rgb(200, 17, 194);
     background: linear-gradient(90deg, rgba(29,32,33,1) 0%, rgba(29,32,33,0.8) 3%, rgba(29,32,33,0.6) 6%, rgba(29,32,33,0.4) 9%, rgba(29,32,33,0.2) 12%, rgba(29,32,33,0) 15%) ;
 }
@@ -115,7 +116,7 @@ background-repeat: no-repeat;
 
 .channelCategoriesContent {
     width: 94%;
-    padding-top: 450px;
+    padding-top: 550px;
     margin-left: 5%;
     height: 100px;
     overflow: scroll;

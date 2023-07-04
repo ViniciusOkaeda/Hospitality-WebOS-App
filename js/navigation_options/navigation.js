@@ -30,7 +30,7 @@
             <a href="../search/search.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/find.png"></image>
+                    <image src="../../images/search2.png"></image>
                 </div>
                 <div class="navigationButtonText">
                     <h3>Pesquisar</h3>
@@ -43,7 +43,7 @@
             <a href="../catalog/catalog.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/home.png"></image>
+                    <image src="../../images/home5.png"></image>
                 </div>
                 <div class="navigationButtonText">
                     <h3>Home</h3>
@@ -54,7 +54,7 @@
             <a href="../channels/channels.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/watching-tv.png"></image>
+                    <image src="../../images/tv3.png"></image>
                 </div>
                 <div class="navigationButtonText">
                     <h3>TV</h3>
@@ -65,7 +65,7 @@
             <a href="../guide/guide.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/bullet-list.png"></image>
+                    <image src="../../images/list3.png"></image>
                 </div>
                 <div class="navigationButtonText">
                     <h3>Programação</h3>
@@ -77,7 +77,7 @@
             <a href="../movies/movies.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/watch-movie.png"></image>
+                    <image src="../../images/movie5.png"></image>
                 </div>
                 <div class="navigationButtonText">
                 <h3>Filmes e Séries</h3>
@@ -88,7 +88,7 @@
             <a href="../channels/channels.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/fm.png"></image>
+                    <image src="../../images/radio4.png"></image>
                 </div>
                 <div class="navigationButtonText">
                 <h3>Radios</h3>
@@ -99,7 +99,7 @@
             <a href="../channels/channels.html">
             <button class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
-                    <image src="../../images/settings.png"></image>
+                    <image src="../../images/gear.png"></image>
                 </div>
                 <div class="navigationButtonText">
                 <h3>Configurações</h3>

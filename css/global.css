@@ -81,3 +81,10 @@ a {
     background-color: #1c1b19;
 }
 
+.selectedCategoryCard:focus-within {
+    transition: opacity 75ms linear 60ms, transform 75ms ease-in-out 50ms; 
+    border: 5px solid rgb(49, 85, 107);
+    position: relative;
+    opacity: 1;
+
+}
