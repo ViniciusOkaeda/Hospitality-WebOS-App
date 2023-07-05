@@ -5,35 +5,21 @@
     document.getElementById('navigationOptions').innerHTML = 
     `
     <div class="navigationContainer ">
-        <div class="navigationContent1 selectedMenu">
+        <div id='navigationToRemove' class="navigationContent1 selectedMenu">
             <div class="navigationProfile">
 
                 <div class="navigationProfileImage"
                 style="background-image: url(${localStorage.getItem('profileimage')});"
                 ></div>
 
-
-                <div class="navigationProfileText">
-                    <h3>${localStorage.getItem('profilename')}</h3>
-
-                    <div class="navigationProfileDate">
-                    <h4 id="horas">00</h4>
-                    <h4>:</h4>
-                    <h4 id="minutos">00</h4>
-                    <h4>:</h4>
-                    <h4 id="segundos">00</h4>
-                    
-                    </div>
-                </div>
             </div>
 
             <a href="../search/search.html">
-            <button class="navigationButton selectedMenuItem">
+            <button  class="navigationButton selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/search2.png"></image>
                 </div>
                 <div class="navigationButtonText">
-                    <h3>Pesquisar</h3>
                 </div>
             </button>
             </a>
@@ -41,13 +27,11 @@
         
 
             <a href="../catalog/catalog.html">
-            <button class="navigationButton selectedMenuItem">
+            <button class="navigationButton  selectedMenuItem">
                 <div class="navigationButtonIcon">
                     <image src="../../images/home5.png"></image>
                 </div>
-                <div class="navigationButtonText">
-                    <h3>Home</h3>
-                </div>
+
             </button>
             </a>
 
@@ -56,9 +40,7 @@
                 <div class="navigationButtonIcon">
                     <image src="../../images/tv3.png"></image>
                 </div>
-                <div class="navigationButtonText">
-                    <h3>TV</h3>
-                </div>
+
             </button>
             </a>
 
@@ -67,10 +49,7 @@
                 <div class="navigationButtonIcon">
                     <image src="../../images/list3.png"></image>
                 </div>
-                <div class="navigationButtonText">
-                    <h3>Programação</h3>
 
-                </div>
             </button>
             </a>
 
@@ -79,9 +58,7 @@
                 <div class="navigationButtonIcon">
                     <image src="../../images/movie5.png"></image>
                 </div>
-                <div class="navigationButtonText">
-                <h3>Filmes e Séries</h3>
-                </div>
+
             </button>
             </a>
 
@@ -90,9 +67,7 @@
                 <div class="navigationButtonIcon">
                     <image src="../../images/radio4.png"></image>
                 </div>
-                <div class="navigationButtonText">
-                <h3>Radios</h3>
-                </div>
+
             </button>
             </a>
 
@@ -101,9 +76,7 @@
                 <div class="navigationButtonIcon">
                     <image src="../../images/gear.png"></image>
                 </div>
-                <div class="navigationButtonText">
-                <h3>Configurações</h3>
-                </div>
+
             </button>
             </a>
 
@@ -111,7 +84,110 @@
  
 
         </div>
-        <div class="navigationContent2"></div>
+
+
+        <div id='navigationToRemove2' class="navigationContent2 selectedMenu navigationNone">
+            <div class="navigationProfile">
+
+            <div class="navigationProfileImage"
+            style="background-image: url(${localStorage.getItem('profileimage')});"
+            ></div>
+
+
+            <div class="navigationProfileText">
+                <h3>${localStorage.getItem('profilename')}</h3>
+
+                <div class="navigationProfileDate">
+                <h4 id="horas">00</h4>
+                <h4>:</h4>
+                <h4 id="minutos">00</h4>
+                <h4>:</h4>
+                <h4 id="segundos">00</h4>
+                
+                </div>
+            </div>
+        </div>
+
+        <a href="../search/search.html">
+        <button  class="navigationButton selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/search2.png"></image>
+            </div>
+            <div class="navigationButtonText">
+                <h3>Pesquisar</h3>
+            </div>
+        </button>
+        </a>
+
+
+
+        <a href="../catalog/catalog.html">
+        <button class="navigationButton  selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/home5.png"></image>
+            </div>
+            <div  class="navigationButtonText">
+                <h3>Home</h3>
+            </div>
+        </button>
+        </a>
+
+        <a href="../channels/channels.html">
+        <button class="navigationButton selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/tv3.png"></image>
+            </div>
+            <div class="navigationButtonText">
+                <h3>TV</h3>
+            </div>
+        </button>
+        </a>
+
+        <a href="../guide/guide.html">
+        <button class="navigationButton selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/list3.png"></image>
+            </div>
+            <div class="navigationButtonText">
+                <h3>Programação</h3>
+
+            </div>
+        </button>
+        </a>
+
+        <a href="../movies/movies.html">
+        <button class="navigationButton selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/movie5.png"></image>
+            </div>
+            <div class="navigationButtonText">
+            <h3>Filmes e Séries</h3>
+            </div>
+        </button>
+        </a>
+
+        <a href="../channels/channels.html">
+        <button class="navigationButton selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/radio4.png"></image>
+            </div>
+            <div class="navigationButtonText">
+            <h3>Radios</h3>
+            </div>
+        </button>
+        </a>
+
+        <a href="../channels/channels.html">
+        <button class="navigationButton selectedMenuItem">
+            <div class="navigationButtonIcon">
+                <image src="../../images/gear.png"></image>
+            </div>
+            <div class="navigationButtonText">
+            <h3>Configurações</h3>
+            </div>
+        </button>
+        </a>
+        </div>
     </div>
     `
 

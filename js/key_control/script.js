@@ -308,6 +308,22 @@ function onKeyDown(event) {
         break;
         case KEYCODE.LEFT:
             switch(window.location.pathname) {
+                case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/channels/channels.html": 
+                console.log("keycode down");
+                moveLeftSelectedChannels();
+                //console.log("o indice é", indice)
+                //aqui começa para acessar o menu lateral esquerdo
+
+                break;
+            
+            case "/pages/channels/channels.html": 
+                console.log("keycode up");
+                moveLeftSelectedChannels();
+                //console.log("o indice é", indice)
+                //aqui começa para acessar o menu lateral esquerdo
+                
+                break;
+
                 case "/media/developer/apps/usr/palm/applications/com.hospitality.yplay.app/pages/catalog/catalog.html": 
                     moveLeftHome();
 
@@ -734,6 +750,7 @@ function moveDownSelectedChannels() {
     if(oneMore < 1) {
         oneMore+=1;
         oneMoreCard = 0;
+        toAcessMenu = 1;
         oneMoreChannelHorizontal = 0;
         console.log("o oneMore", oneMore);
         indice = campo[oneMore];
@@ -804,6 +821,7 @@ function moveUpSelectedChannels() {
     if(oneMoreChannelVertical == 1) {
         oneMore-=1;
         oneMoreCard = 0;
+        toAcessMenu = 1;
         console.log("o oneMore", oneMore);
         console.log("o oneMore", oneMoreChannelVertical);
         indice = campo[oneMore];
@@ -827,6 +845,8 @@ function moveUpSelectedChannels() {
         }
 
     }
+
+
 
     if(oneMoreChannelVertical >= 2) {
         indice = campo[oneMore];
@@ -862,23 +882,73 @@ function moveUpSelectedChannels() {
 }
 function moveLeftSelectedChannels() {
 
-    indice = campo[oneMore];
-    if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
-        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
-        //console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
-        if(oneMoreCard > 0){
-            oneMoreCard-=1;
-            console.log("o onemorecard apertando o left", oneMoreCard)
+    if(toAcessMenu > 0) {
+        console.log("o to acess menu na left", toAcessMenu)
 
-        }
-        if(oneMoreCard >= 0) {
-            if(toAcessMenu > 0) {
-                toAcessMenu-=1;
-                console.log("to acess menu left", toAcessMenu);
+
+
+
+
+        indice = campo[oneMore];
+        if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
+            //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
+            //console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
+            
+            
+            if(oneMore == 0) {
+                console.log("tamanho", indice.getElementsByClassName('selectedCategoryCard').length)
+                console.log("o acessMenu é", toAcessMenu)
+                if(oneMoreCard > 0){
+                    if(oneMoreChannelHorizontal >= -1) {
+                        toAcessMenu-=1;
+                        if (toAcessMenu == 0) {
+                            console.log("o acessMenu é 2", toAcessMenu)
+                            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+                            toFocus.blur();
+                                
+                            indiceMenu = menu[1];
+                            var toDisplay = document.getElementById('navigationToRemove');
+                            var toDisplay2 = document.getElementById('navigationToRemove2');
+                            console.log("o que tem no toDisplay", toDisplay)
+                            toDisplay2.classList.remove("navigationNone");
+                            toDisplay.classList.add("navigationNone");
+                
+                            var toFocusMenu = indiceMenu.getElementsByClassName('selectedMenuItem')[oneMoreMenu];
+                            toFocusMenu.focus();
+                            console.log("o que tem no indiceMenu", indiceMenu)
+                        }
+                    }
+
+                    if(oneMoreChannelHorizontal > 0) {
+                        oneMoreChannelHorizontal-=1;
+                        oneMoreCard-=1;
+                        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+                        toFocus.focus();
+                    }
+                    console.log("o onemorecard apertando o left", oneMoreCard)
+                }
             }
-            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
-            toFocus.focus();
-        }
+            
+            
+            if(oneMore == 1) {
+                if(oneMoreCard > 0){
+                    if(oneMoreChannelHorizontal > 0) {
+                        oneMoreChannelHorizontal-=1;
+                        oneMoreCard-=1;
+                        toAcessMenu-=1;
+                        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+                        toFocus.focus();
+                    }
+                    console.log("o onemorecard apertando o left", oneMoreCard)
+                }
+    
+            }
+
+
+
+    }
+
+
 
         //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
         //    inline: "left",
@@ -890,46 +960,53 @@ function moveLeftSelectedChannels() {
 }
 function moveRightSelectedChannels() {
 
-    indice = campo[oneMore];
-    if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
-        //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
-        console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
-        if(oneMore == 0) {
-            console.log("tamanho", indice.getElementsByClassName('selectedCategoryCard').length)
-            if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
-                if(oneMoreChannelHorizontal < indice.getElementsByClassName('selectedCategoryCard').length) {
-                    oneMoreChannelHorizontal+=1;
-                    oneMoreCard+=1;
+
+    if(toAcessMenu > 0) {
+        indice = campo[oneMore];
+        console.log("o to acess menu na right", toAcessMenu)
+        if(indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != null || indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard] != undefined){
+            //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.remove("teste");
+            console.log("o tamanho", campo[oneMore].getElementsByClassName('selectedCategoryCard').length)
+            if(oneMore == 0) {
+                console.log("tamanho", indice.getElementsByClassName('selectedCategoryCard').length)
+                if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
+                    if(oneMoreChannelHorizontal < indice.getElementsByClassName('selectedCategoryCard').length) {
+                        oneMoreChannelHorizontal+=1;
+                        oneMoreCard+=1;
+                        toAcessMenu+=1;
+                        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+                        toFocus.focus();
+    
+                    }
+                    console.log("o onemorecard apertando o right", oneMoreCard)
                 }
-                console.log("o onemorecard apertando o right", oneMoreCard)
             }
-        }
-        
-        
-        if(oneMore == 1) {
-            if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
-                if(oneMoreChannelHorizontal < 4) {
-                    oneMoreChannelHorizontal+=1;
-                    oneMoreCard+=1;
+            
+            
+            if(oneMore == 1) {
+                if(oneMoreCard < indice.getElementsByClassName('selectedCategoryCard').length -1){
+                    if(oneMoreChannelHorizontal < 5) {
+                        toAcessMenu+=1;
+                    }
+                    if(oneMoreChannelHorizontal < 4) {
+                        oneMoreChannelHorizontal+=1;
+                        oneMoreCard+=1;
+                        var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
+                        toFocus.focus();
+                    }
+                    console.log("o onemorecard apertando o right", oneMoreCard)
                 }
-                console.log("o onemorecard apertando o right", oneMoreCard)
+    
             }
 
-        }
+    }
+
         //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
         //    inline: "left",
       //      behavior: "smooth"
     //    });
 
-        if(oneMoreCard >= 0) {
 
-            if(toAcessMenu <= indice.getElementsByClassName('selectedCategoryCard').length -1) {
-                toAcessMenu+=1;
-                console.log("o to acess menu right", toAcessMenu)
-            }
-            var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
-            toFocus.focus();
-        }
     }
 }
 
