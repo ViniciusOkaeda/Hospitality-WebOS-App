@@ -5,7 +5,7 @@
     height: 1080px;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     background-attachment: scroll;
     position: fixed;
     z-index: 0;
@@ -213,15 +213,24 @@
     min-width: 300px;
     margin: 0px 10px 0px 10px;
     flex-shrink: 0;
+
     }
     
     .cardsInfo button{
         width: 300px;
         height: 400px;
+        scroll-margin-left: 100px;
+
+        
     }
 
 .cardsInfo:nth-child(1) {
     margin-left: 100px;
+}
+
+
+.cardsInfo:nth-last-child(1) {
+    margin-right: 1800px;
 }
 
 .cardsInfoDescription {

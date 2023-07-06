@@ -164,10 +164,13 @@ flex-shrink: 0;
 padding-left: 15%;
 }
 
+
 .cardButton button{
     width: 242px;
     height: 350px;
     margin: 0px 10px 0px 10px;
+    scroll-margin-left: 100px;
+
 }
 
 

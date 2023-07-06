@@ -590,6 +590,7 @@ function onKeyDown(event) {
             //toFocus.scrollTo(0, 1000)
             //toFocus.scrollIntoView({ inline: "left"});
             toFocus.focus();
+            toFocus.scrollIntoView({ behavior: "auto", block: "center", inline: "start" }) ;
         }
     }
 
@@ -697,12 +698,13 @@ function moveLeftSelectedContent() {
 
         }
         if(oneMoreCard >= 0) {
-            if(toAcessMenu > 0) {
-                toAcessMenu-=1;
-                console.log("to acess menu left", toAcessMenu);
-            }
+
             var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
             toFocus.focus();
+            if(oneMore > 0) {
+                toFocus.scrollIntoView({ behavior: "auto", inline: "start" }) ;
+
+            }
         }
 
         //campo[oneMore].getElementsByClassName('selectedCategoryCard')[oneMoreCard].classList.add("teste").scrollIntoView({
@@ -730,12 +732,12 @@ function moveRightSelectedContent() {
 
         if(oneMoreCard >= 0) {
 
-            if(toAcessMenu <= indice.getElementsByClassName('selectedCategoryCard').length -1) {
-                toAcessMenu+=1;
-                console.log("o to acess menu right", toAcessMenu)
-            }
             var toFocus = indice.getElementsByClassName('selectedCategoryCard')[oneMoreCard];
             toFocus.focus();
+            if(oneMore > 0) {
+                toFocus.scrollIntoView({ behavior: "auto", inline: "start" }) ;
+
+            }
         }
     }
 }

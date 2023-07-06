@@ -58,10 +58,10 @@ async function getSpecificEvent() {
                 vodsId: parseInt(event),
                 timestamp: 0
             }).then(function (response) {
-                console.log("o response", response)
+                console.log("o response getSpecificEventRequestVod", response)
                 if(response.data.status == 1){
                     console.log("o getDataV2", response.data.response);
-                    showEventInitial(response.data.response);
+                    showEventInitial([response.data.response]);
                 }
             }).catch(function (response) {
                 console.log("o response de erro", response)
@@ -76,7 +76,7 @@ async function getSpecificEvent() {
                 id: parseInt(event),
                 type: type
             }).then(function (response) {
-                console.log("o response", response)
+                console.log("o response getRecomendationEventRequestVod", response)
                 if(response.data.status == 1){
                     console.log("o EventRecomendations", response.data.response);
                     showEventRecomendations(response.data.response);
@@ -140,7 +140,7 @@ function showEventInitial(response) {
     ${response.map((e, idx) => {
         return(`
             <div class="initial" >
-                <div class="initialImageBackground" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(29, 32, 33, 1) 90%), url(${e.image_widescreen})"></div>
+                <div class="initialImageBackground" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(29, 32, 33, 1) 90%), url(${e.image_widescreen == null ? e.image : e.image_widescreen})"></div>
                 <div class="initialInfoContent">
                     <div class="initialInfo">
                         <div class="initialInfoTitle">
@@ -227,7 +227,7 @@ function showEventRecomendations(response) {
                                     <button
                                     class="selectedCategoryCard"
                                     onfocus="showFocusedCardInfo()"
-                                    onclick=""
+                                    onclick="showAnotherEvent()"
                                     data-id=" ${card.id}"
                                     data-duration="${card.duration}"
                                     data-type="${card.type}"
@@ -269,8 +269,8 @@ function showEventRecomendations(response) {
 
 function showFocusedCardInfo() {
     console.log("o event", event.target.dataset)
-    const dataCriada = new Date(event.target.dataset.start);
-    const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(dataCriada);
+    //const dataCriada = new Date(event.target.dataset.start);
+    //const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(dataCriada);
     document.getElementById("focusedCard").innerHTML = 
     
     `
@@ -279,7 +279,7 @@ function showFocusedCardInfo() {
             <h3>${event.target.dataset.title}</h3>
         </div>
 
-        <div class="${event.target.dataset.episode != "null" ? "focusedCardEpisode" : "focusedNone"}">
+        <div class="${event.target.dataset.episode !== "null" ? "focusedCardEpisode" : "focusedNone"}">
             <h3>${event.target.dataset.episode}</h3>
         </div>
 
@@ -305,7 +305,7 @@ function showFocusedCardInfo() {
         </div>
 
         <div class="${event.target.dataset.start != "undefined" ? "focusedCardStart" : "focusedNone"}">
-            <h4>${formatedDate}</h4>
+            <h4>${event.target.dataset.start}</h4>
         </div>
     </div>
 
@@ -318,6 +318,15 @@ function showFocusedCardInfo() {
 
 function showEvent() {
     window.location.href = '../../pages/player/player.html'
+}
+
+function showAnotherEvent() {
+
+    localStorage.setItem("idContent", event.target.dataset.channelid)
+    localStorage.setItem("event", event.target.dataset.id)
+    localStorage.setItem("type", event.target.dataset.type)
+    window.location.href = '../../pages/info-selected-content/selectedcontent.html'
+
 }
 
 

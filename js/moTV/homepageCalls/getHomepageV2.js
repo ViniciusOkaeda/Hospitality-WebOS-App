@@ -328,8 +328,9 @@ function showEventInfo() {
             <h3>${event.target.dataset.title}</h3>
         </div>
 
-        <div class="${event.target.dataset.episode != "null" ? "focusedCardEpisode" : "focusedNone"}">
-            <h3 class="${event.target.dataset.episode == "null" ? "focusedNone" : ""}">${event.target.dataset.episode}</h3>
+        <div class="${event.target.dataset.episode !== "null" ? "focusedCardEpisode" : "focusedNone"}">
+            ${event.target.dataset.episode !== "null" ? `<h3">${event.target.dataset.episode}</h3>` : ''}
+            
         </div>
 
         <div class="focusedCardRating
@@ -343,9 +344,9 @@ function showEventInfo() {
         </div>
     </div>
 
-    <div class="${event.target.dataset.logo != "undefined" || event.target.dataset.duration != "undefined" ? "focusedCardContent2" : "focusedNone"}">
+    <div class="${event.target.dataset.logo !== "null" || event.target.dataset.duration !== "null" ? "focusedCardContent2" : "focusedNone"}">
         <div 
-        class="${event.target.dataset.logo != "undefined" ? "focusedCardLogo" : "focusedNone"}" 
+        class="${event.target.dataset.logo !== "null" ? "focusedCardLogo" : "focusedNone"}" 
         style="background-image: url(${event.target.dataset.logo}); height: 100%;"
         ></div>
 
@@ -353,7 +354,7 @@ function showEventInfo() {
             <h4>Duração: ${event.target.dataset.duration / 60}m</h4>
         </div>
 
-        <div class="${event.target.dataset.start != "undefined" ? "focusedCardStart" : "focusedNone"}">
+        <div class="${event.target.dataset.start !== "null" ? "focusedCardStart" : "focusedNone"}">
             <h4>${event.target.dataset.start}</h4>
         </div>
     </div>

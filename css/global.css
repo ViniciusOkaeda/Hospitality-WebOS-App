@@ -19,14 +19,12 @@ h2 {
     font-size: 3rem;
     text-shadow: 2px 2px rgba(94, 94, 94, 0.3);
 
-
 }
 
 h3 {
     font-size: 2rem;
     color: white;
     font-weight: bold;
-
 }
 
 h4 {
@@ -39,7 +37,6 @@ h6 {
     color: rgb(204, 204, 204);
     font-size: 1.2rem;
     font-weight: 400;
-
 }
 
 button {
