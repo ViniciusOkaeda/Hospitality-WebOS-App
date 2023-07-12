@@ -309,7 +309,7 @@ function storageContent() {
             localStorage.setItem("idContent", event.target.dataset.id)
             localStorage.setItem("event", event.target.dataset.id)
             localStorage.setItem("type", event.target.dataset.type)
-            //window.location.href = '../../pages/player/player.html'
+            window.location.href = '../../pages/info-selected-content/selectedcontent.html'
             break;
     }
     console.log("o evento", event.target.dataset)

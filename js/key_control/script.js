@@ -645,6 +645,7 @@ function moveDownSelectedContent() {
 
     if(oneMore < campo.length -1) {
         oneMore+=1;
+        sessionStorage.setItem("indexCount", oneMore -1);
         oneMoreCard = 0;
 
     }
@@ -675,6 +676,7 @@ function moveDownSelectedContent() {
 function moveUpSelectedContent() {
     if(oneMore > 0) {
         oneMore-=1;
+        sessionStorage.setItem("indexCount", oneMore);
         oneMoreCard = 0;
     }
 

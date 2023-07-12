@@ -93,13 +93,14 @@ async function getSpecificEvent() {
                 profileId: profile,
                 language: language,
                 devicesType: devicesType,
-                ids: [parseInt(event)],
+                categoriesId: parseInt(event),
                 timestamp: 0
             }).then(function (response) {
                 console.log("o response", response)
                 if(response.data.status == 1){
                     console.log("o getUpdatedEventsV2", response.data.response);
-                    showEventInitial(response.data.response);
+                    showCategoryEventInitial([response.data.response.category]);
+                    showEventRecomendations(response.data.response.rows)
                 }
             }).catch(function (response) {
                 console.log("o response de erro", response)
@@ -152,6 +153,7 @@ function showEventInitial(response) {
                             ${e.rating < 10 ? "bannerRatingL" : ''} 
                             ${e.rating == 10 ? "bannerRating10" : ''} 
                             ${e.rating == 12 ? "bannerRating12" : ''} 
+                            ${e.rating == 13 ? "bannerRating12" : ''} 
                             ${e.rating == 14 ? "bannerRating14" : ''} 
                             ${e.rating == 16 ? "bannerRating16" : ''} 
                             ${e.rating == 18 ? "bannerRating18" : ''}
@@ -163,7 +165,7 @@ function showEventInitial(response) {
 
 
                         <div class="initialInfoDetails">
-                            <div class="initialInfoLogo">
+                            <div class="${e.channels_logo !== undefined ? "initialInfoLogo" : "focusedNone"}">
                                 <img src="${e.channels_logo}" class="infoChannelLogo"></img>
                             </div>
 
@@ -190,7 +192,7 @@ function showEventInitial(response) {
                                 <h3>${e.description}</h3>
                             </div>
 
-                            <div class="infoDirectors">
+                            <div class="${e.directors !== null ? "infoDirectors" : "focusedNone"}">
                                 <h4>Direção: ${e.directors}</h4>
                             </div>
 
@@ -257,7 +259,7 @@ function showEventRecomendations(response) {
                     </div>
 
 
-                    <div id="focusedCard" class="cardsInfoDescription">
+                    <div id="focusedCard" class="cardsInfoDescription moreCardInfoContent">
 
                     </div>
                 </div>
@@ -270,8 +272,9 @@ function showEventRecomendations(response) {
 function showFocusedCardInfo() {
     console.log("o event", event.target.dataset)
     //const dataCriada = new Date(event.target.dataset.start);
+    var indexCard = parseInt(sessionStorage.getItem("indexCount"));
     //const formatedDate = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'full', timeStyle: 'short' }).format(dataCriada);
-    document.getElementById("focusedCard").innerHTML = 
+    document.querySelectorAll(".moreCardInfoContent")[indexCard].innerHTML = 
     
     `
     <div class="focusedCardContent">
@@ -283,10 +286,11 @@ function showFocusedCardInfo() {
             <h3>${event.target.dataset.episode}</h3>
         </div>
 
-        <div class="focusedCardRating
+        <div class="${event.target.dataset.rating != "null" ? "focusedCardRating" : "focusedNone"}
             ${event.target.dataset.rating < 10 ? "bannerRatingL" : ''} 
             ${event.target.dataset.rating == 10 ? "bannerRating10" : ''} 
             ${event.target.dataset.rating == 12 ? "bannerRating12" : ''} 
+            ${event.target.dataset.rating == 13 ? "bannerRating12" : ''} 
             ${event.target.dataset.rating == 14 ? "bannerRating14" : ''} 
             ${event.target.dataset.rating == 16 ? "bannerRating16" : ''} 
             ${event.target.dataset.rating == 18 ? "bannerRating18" : ''}
@@ -309,7 +313,7 @@ function showFocusedCardInfo() {
         </div>
     </div>
 
-    <div class="focusedCardDescription">
+    <div class="${event.target.dataset.description != "null" ? "focusedCardDescription" : "focusedNone"}">
         <h4>${event.target.dataset.description}</h4>
     </div>
     `
@@ -328,5 +332,82 @@ function showAnotherEvent() {
     window.location.href = '../../pages/info-selected-content/selectedcontent.html'
 
 }
+
+
+
+//-- funções para category
+
+function showCategoryEventInitial(category) {
+console.log("o que tem no category", category)
+document.getElementById("myInitialInfo").innerHTML =
+`
+${category.map((e, idx) => {
+    return(`
+        <div class="initial" >
+            <div class="initialImageBackground" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(29, 32, 33, 1) 90%), url(${e.categories_image_widescreen == null ? e.categories_image : e.categories_image_widescreen})"></div>
+            <div class="initialInfoContent">
+                <div class="initialInfo">
+                    <div class="initialInfoTitle">
+                        <div class="infoTitle">
+                            <h1>${e.follow.title}</h1>
+                        </div>
+
+                        <div class="infoRating
+                        ${e.follow.rating < 10 ? "bannerRatingL" : ''} 
+                        ${e.follow.rating == 10 ? "bannerRating10" : ''} 
+                        ${e.follow.rating == 12 ? "bannerRating12" : ''} 
+                        ${e.follow.rating == 13 ? "bannerRating12" : ''} 
+                        ${e.follow.rating == 14 ? "bannerRating14" : ''} 
+                        ${e.follow.rating == 16 ? "bannerRating16" : ''} 
+                        ${e.follow.rating == 18 ? "bannerRating18" : ''}
+                        ">
+                            <h2>${e.follow.rating == 0 ? "L" : e.follow.rating}</h2>
+
+                        </div>
+                    </div>
+
+
+                    <div class="initialInfoDetails">
+                        <div class="${e.follow.channels_logo !== undefined ? "initialInfoLogo" : "focusedNone"}">
+                            <img src="${e.follow.channels_logo}" class="infoChannelLogo"></img>
+                        </div>
+
+                        <div class="initialInfoTime">
+                            <h4>Duração: ${e.follow.duration / 60}m</h4>
+                        </div>
+
+                        <div class="initialInfoGenres">
+                        <h4>Categoria: ${e.follow.genres}</h4>
+                        </div>
+                    </div>
+
+                    <div class="initialInfoButtons selected">
+                        <div class="infoButtonPlay">
+                            <button class="selectedCategoryCard" onclick="showEvent()">Assistir Agora!</button>
+                        </div>
+                        <div class="infoButtonMyList">
+                            <button class="selectedCategoryCard">Adicionar em Minha Lista</button>
+                        </div>
+                    </div>
+
+                    <div class="initialInfoDescription">
+                        <div class="infoDescription">
+                            <h3>${e.follow.description}</h3>
+                        </div>
+
+                        <div class="${e.follow.directors !== null ? "infoDirectors" : "focusedNone"}">
+                            <h4>Direção: ${e.follow.directors}</h4>
+                        </div>
+
+                        <div class="shadow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `)
+})}
+`
+}
+
 
 
